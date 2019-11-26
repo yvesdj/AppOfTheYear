@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".TafelSelector">
 
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        >
+
+        <TextView
+            android:id="@+id/TafelsTitel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Tafels"
+
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <GridLayout
+            android:id="@+id/GridTafels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="2"
+            android:orientation="horizontal"
+            >
+
+            <!--<ImageButton
+                android:id="@+id/Tafel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src=""
+
+
+                />-->
+
+        </GridLayout>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
