@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/marmerachtergrond"
 
     tools:context=".TafelSelector">
 
@@ -32,7 +33,7 @@
             android:gravity="center"
             android:text="Tafels"
 
-            android:textSize="50sp"
+            android:textSize="80sp"
             android:textStyle="bold" />
 
 
@@ -54,66 +55,165 @@
             android:layout_margin="16dp"
             android:orientation="horizontal"
             >
-            <ImageButton
-                android:id="@+id/Tafel1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
 
-                android:layout_gravity="center_horizontal"
-                />
-            <ImageButton
-                android:id="@+id/Tafel2"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
 
-                android:layout_gravity="center_horizontal"
-                />
-            <ImageButton
-                android:id="@+id/Tafel3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
+                >
+                <ImageButton
+                    android:id="@+id/Tafel1"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/tableicon"
 
-                android:layout_gravity="center_horizontal"
-                />
+                    android:layout_gravity="center_horizontal"
+                    />
+                <TextView
+                    android:id="@+id/Tafel1Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="40dp"
+                    android:gravity="center"
+                    android:text="Tafel 1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+                <ImageButton
+                    android:id="@+id/Tafel2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/tableicon"
+
+                    android:layout_gravity="center_horizontal"
+                    />
+                <TextView
+                    android:id="@+id/Tafel2Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="40dp"
+                    android:gravity="center"
+                    android:text="Tafel 2"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                >
+                <ImageButton
+                    android:id="@+id/Tafel3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/tableicon"
+
+                    android:layout_gravity="center_horizontal"
+                    />
+                <TextView
+                    android:id="@+id/Tafel3Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="40dp"
+                    android:gravity="center"
+                    android:text="Tafel 3"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            >
-            <ImageButton
-                android:id="@+id/Tafel1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="horizontal"
+                >
 
-                android:layout_gravity="center_horizontal"
-                />
-            <ImageButton
-                android:id="@+id/Tafel2"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
 
-                android:layout_gravity="center_horizontal"
-                />
-            <ImageButton
-                android:id="@+id/Tafel3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/tableicon"
+                    >
+                    <ImageButton
+                        android:id="@+id/Tafel4"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/tableicon"
 
-                android:layout_gravity="center_horizontal"
-                />
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:id="@+id/Tafel4Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="40dp"
+                        android:gravity="center"
+                        android:text="Tafel 4"
+                        />
+                </LinearLayout>
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <ImageButton
+                        android:id="@+id/Tafel5"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/tableicon"
+
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:id="@+id/Tafel5Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="40dp"
+                        android:gravity="center"
+                        android:text="Tafel 5"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <ImageButton
+                        android:id="@+id/Tafel6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@drawable/tableicon"
+
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:id="@+id/Tafel6Text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="40dp"
+                        android:gravity="center"
+                        android:text="Tafel 6"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
 
         </GridLayout>
     </LinearLayout>
