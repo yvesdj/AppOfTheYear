@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppOfTheYear</string>
+    <string name="mvbarAct">move to bar activity</string>
 </resources>
