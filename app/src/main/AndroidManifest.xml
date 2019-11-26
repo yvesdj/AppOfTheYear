@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Bar"></activity>
         <activity android:name=".Keuken" />
+        <activity android:name=".Tafel"></activity>
+        <activity android:name=".TafelSelector" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
