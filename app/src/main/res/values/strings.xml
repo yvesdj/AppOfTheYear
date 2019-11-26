@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppOfTheYear</string>
     <string name="mvbarAct">move to bar activity</string>
+    <string name="buttonterug">button om terug te gaan</string>
+    <string name="keuken">Keuken</string>
+    <string name="inkomend">Inkomend:</string>
 </resources>
