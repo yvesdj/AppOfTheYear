@@ -11,4 +11,7 @@ public class TafelSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tafel_selector);
     }
+
+
+
 }
