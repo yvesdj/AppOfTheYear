@@ -18,14 +18,16 @@
         <ImageView
             android:id="@+id/barIcon"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="230dp"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/mvbarAct"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baricon" />
-       
+            app:srcCompat="@drawable/baricon"
+            android:onClick="GaNaarBar"
+            />
+
         <ImageView
             android:id="@+id/kitchen-icon"
             android:layout_width="match_parent"
@@ -35,7 +37,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kitchenicon" />
+            app:srcCompat="@drawable/kitchenicon"
+            android:onClick="GaNaarKeuken"
+            />
 
         <ImageView
             android:id="@+id/waiter"
@@ -46,7 +50,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/waitericon" />
+            app:srcCompat="@drawable/waitericon"
+            android:onClick="GaNaarTafelSector"
+            />
 
 
     </LinearLayout>
