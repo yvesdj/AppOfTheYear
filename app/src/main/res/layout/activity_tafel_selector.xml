@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/marmerachtergrond"
 
-    tools:context=".TafelSelector">
+    tools:context=".TafelSelectorActivity">
 
     <LinearLayout
         android:layout_height="match_parent"

@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bar"
+        <activity android:name=".BarActivity"
             android:label="Bar"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.appoftheyear.MainActivity"/>
         </activity>
-        <activity android:name=".Keuken"
+        <activity android:name=".KeukenActivity"
             android:label="Keuken"
             android:parentActivityName=".MainActivity"
             >
@@ -24,8 +24,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.appoftheyear.MainActivity"/>
         </activity>
-        <activity android:name=".Tafel"></activity>
-        <activity android:name=".TafelSelector"
+        <activity android:name=".TafelActivity"></activity>
+        <activity android:name=".TafelSelectorActivity"
             android:label="Tafelsector"
             android:parentActivityName=".MainActivity">
             <meta-data

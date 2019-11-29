@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GaNaarBar(View view) {
-        Intent intent = new Intent(this, Bar.class);
+        Intent intent = new Intent(this, BarActivity.class);
         startActivity(intent);
 
 
@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GaNaarKeuken(View view) {
-        Intent intent = new Intent(this, Keuken.class);
+        Intent intent = new Intent(this, KeukenActivity.class);
         startActivity(intent);
     }
 
     public void GaNaarTafelSector(View view) {
-        Intent intent = new Intent(this, TafelSelector.class);
+        Intent intent = new Intent(this, TafelSelectorActivity.class);
         startActivity(intent);
     }
 }

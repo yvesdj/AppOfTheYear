@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TafelSelector extends AppCompatActivity {
+public class TafelActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tafel_selector);
+        setContentView(R.layout.activity_tafel);
     }
-
-
-
 }
