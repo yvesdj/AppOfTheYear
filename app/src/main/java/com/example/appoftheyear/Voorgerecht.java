@@ -2,7 +2,7 @@ package com.example.appoftheyear;
 
 public class Voorgerecht {
     private String _naam;
-    
+
     public String Get_naam() {
         return _naam;
     }
@@ -19,5 +19,15 @@ public class Voorgerecht {
 
     public void Set_prijs(int _prijs) {
         this._prijs = _prijs;
+    }
+
+    public Voorgerecht(String Naam, int Prijs) {
+        _naam = Naam;
+        _prijs = Prijs;
+    }
+
+    @Override
+    public String toString(){
+        return _naam;
     }
 }
