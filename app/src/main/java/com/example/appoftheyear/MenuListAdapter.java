@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.appoftheyear.classLibrary.Voorgerecht;
+
 import java.util.LinkedList;
 
 import androidx.annotation.NonNull;

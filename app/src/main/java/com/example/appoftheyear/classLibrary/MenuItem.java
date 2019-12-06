@@ -1,6 +1,6 @@
-package com.example.appoftheyear;
+package com.example.appoftheyear.classLibrary;
 
-public class Voorgerecht {
+public class MenuItem {
     private String _naam;
 
     public String Get_naam() {
@@ -21,9 +21,9 @@ public class Voorgerecht {
         this._prijs = _prijs;
     }
 
-    public Voorgerecht(String Naam, int Prijs) {
-        _naam = Naam;
-        _prijs = Prijs;
+    public MenuItem(String naam, int prijs){
+        Set_naam(naam);
+        Set_prijs(prijs);
     }
 
     @Override

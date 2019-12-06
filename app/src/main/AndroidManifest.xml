@@ -9,28 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BarActivity"
+        <activity android:name=".BarSelectorActivity"></activity>
+        <activity
+            android:name=".BarActivity"
             android:label="Bar"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.appoftheyear.MainActivity"/>
+                android:value="com.example.appoftheyear.MainActivity" />
         </activity>
-        <activity android:name=".KeukenActivity"
+        <activity
+            android:name=".KeukenActivity"
             android:label="Keuken"
-            android:parentActivityName=".MainActivity"
-            >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.appoftheyear.MainActivity"/>
+                android:value="com.example.appoftheyear.MainActivity" />
         </activity>
-        <activity android:name=".TafelActivity"></activity>
-        <activity android:name=".TafelSelectorActivity"
+        <activity android:name=".TafelActivity" />
+        <activity
+            android:name=".TafelSelectorActivity"
             android:label="Tafelsector"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.appoftheyear.MainActivity"/>
+                android:value="com.example.appoftheyear.MainActivity" />
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>

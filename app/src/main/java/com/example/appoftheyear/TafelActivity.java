@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.appoftheyear.classLibrary.Voorgerecht;
+
 import java.util.LinkedList;
 
 public class TafelActivity extends AppCompatActivity {
