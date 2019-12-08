@@ -5,4 +5,7 @@
     <string name="keuken">Keuken</string>
     <string name="inkomend">Inkomend:</string>
     <string name="bar">Bar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

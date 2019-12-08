@@ -14,7 +14,7 @@
         android:padding="16dp"
 
 
-        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp">
 
@@ -34,82 +34,49 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
+
+
+
+       <com.google.android.material.appbar.AppBarLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+           <androidx.appcompat.widget.Toolbar
+               android:id="@+id/myToolbar"
+               android:layout_width="match_parent"
+               android:layout_height="?attr/actionBarSize"
+               android:background="@color/colorPrimary"
+               app:layout_scrollFlags="scroll|enterAlways"
+               app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+               />
+
+           <com.google.android.material.tabs.TabLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/tablayout"
+               app:tabIndicator="@android:color/white"
+               app:tabIndicatorHeight="2dp"
+               app:tabMode="fixed"
+               app:tabGravity="fill"
+               />
+
+       </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Voorgerecht" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Hoofdgerecht" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Dessert" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Drank" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/myViewPager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="618dp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="horizontal"
-        android:weightSum="3"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/Menu"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginRight="25dp"
-
-            android:background="@drawable/menuicon" />
-
-        <ImageButton
-            android:id="@+id/Bestellen"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginRight="25dp"
-
-            android:background="@drawable/bestellenicon" />
-
-        <ImageButton
-            android:id="@+id/Betalen"
-
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-
-            android:background="@drawable/payicon" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

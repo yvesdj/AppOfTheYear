@@ -1,6 +1,9 @@
 package com.example.appoftheyear;
 
 public class Voorgerecht {
+
+
+
     private String _naam;
 
     public String Get_naam() {
@@ -29,5 +32,10 @@ public class Voorgerecht {
     @Override
     public String toString(){
         return _naam;
+
+
     }
+
+
+
 }
