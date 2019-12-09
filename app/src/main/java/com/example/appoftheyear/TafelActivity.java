@@ -66,6 +66,7 @@ public class TafelActivity extends AppCompatActivity {
         viewPagerAdapter.addFragement(new HoofdgerechtenFragment(),"HOOFGERECHTEN");
         viewPagerAdapter.addFragement(new DessertFragment(),"DESSERS");
         viewPagerAdapter.addFragement(new DrinksFragment(),"DRINKS");
+        viewPagerAdapter.addFragement(new BestellingFragment(),"BESTELLINGEN");
         viewPager.setAdapter(viewPagerAdapter);
 
     }
