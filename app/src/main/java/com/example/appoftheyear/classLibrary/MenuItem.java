@@ -1,6 +1,6 @@
 package com.example.appoftheyear.classLibrary;
 
-public class MenuItem {
+public abstract class MenuItem {
     private String _naam;
 
     public String Get_naam() {
@@ -11,17 +11,17 @@ public class MenuItem {
         this._naam = _naam;
     }
 
-    private int _prijs;
+    private float _prijs;
 
-    public int Get_prijs() {
+    public float Get_prijs() {
         return _prijs;
     }
 
-    public void Set_prijs(int _prijs) {
+    public void Set_prijs(float _prijs) {
         this._prijs = _prijs;
     }
 
-    public MenuItem(String naam, int prijs){
+    public MenuItem(String naam, float prijs){
         Set_naam(naam);
         Set_prijs(prijs);
     }

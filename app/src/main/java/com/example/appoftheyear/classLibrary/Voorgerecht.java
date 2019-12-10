@@ -1,7 +1,7 @@
 package com.example.appoftheyear.classLibrary;
 
 public class Voorgerecht extends MenuItem {
-    public Voorgerecht(String naam, int prijs) {
+    public Voorgerecht(String naam, float prijs) {
         super(naam, prijs);
     }
 

@@ -7,20 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.appoftheyear.classLibrary.Hoofdgerecht;
+import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.Voorgerecht;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ItemViewHolder> {
-    private final LinkedList<Voorgerecht> voorgerechten;
+    private final ArrayList<Hoofdgerecht> _menuItems;
     private LayoutInflater inflater;
 
-    public MenuListAdapter(Context context, LinkedList<Voorgerecht> voorgerechten) {
+    public MenuListAdapter(Context context, ArrayList<Hoofdgerecht> menuItems) {
         inflater = LayoutInflater.from(context);
-        this.voorgerechten = voorgerechten;
+        this._menuItems = menuItems;
     }
 
     @NonNull
@@ -32,13 +35,13 @@ public class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        Voorgerecht current = voorgerechten.get(position);
+        MenuItem current = _menuItems.get(position);
         holder.menuItemView.setText(current.Get_naam());
     }
 
     @Override
     public int getItemCount() {
-        return voorgerechten.size();
+        return _menuItems.size();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder {
