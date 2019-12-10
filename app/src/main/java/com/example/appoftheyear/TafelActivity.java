@@ -18,12 +18,14 @@ import java.util.LinkedList;
 public class TafelActivity extends AppCompatActivity {
 
 
-
+/*
+    //Recycleview
     private final LinkedList<Voorgerecht> voorgerechten = new LinkedList<>();
     private RecyclerView recyclerView;
     private MenuListAdapter adapter;
+*/
 
-    private Toolbar toolbar;
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -32,11 +34,11 @@ public class TafelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tafel);
 
-       toolbar =(Toolbar) findViewById(R.id.myToolbar);
+
        tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.myViewPager);
 
-        setSupportActionBar(toolbar);
+
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -44,18 +46,19 @@ public class TafelActivity extends AppCompatActivity {
 
 
 
-        for (int i = 0; i < 20; i++) {
+        /*for (int i = 0; i < 20; i++) {
             String naam = "voorgerecht " + i;
             voorgerechten.addLast(new Voorgerecht(naam , 4));
             Log.d("Voorgerechten", "Value: " + naam);
 
         }
+
         Voorgerecht voorgerecht2 = voorgerechten.get(1);
         Log.d("Voorgerechten", "Value: " + voorgerecht2);
         recyclerView = findViewById(R.id.recyclerview);
         adapter = new MenuListAdapter(this, voorgerechten);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
 
     }
 
