@@ -1,12 +1,6 @@
 package com.example.appoftheyear.classLibrary;
 
-import android.util.Log;
-
-import com.example.appoftheyear.MenuListAdapter;
-import com.example.appoftheyear.R;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class MenuKaart {
     private static ArrayList<MenuItem> _menuItems;
@@ -40,6 +34,16 @@ public class MenuKaart {
             }
         }
         return voorgerechten;
+    }
+
+    public ArrayList<String> GetVoorgerechtNamen(){
+        ArrayList<String> namen = new ArrayList<String>();
+        for (MenuItem item : _menuItems) {
+            if (item instanceof Voorgerecht)
+            namen.add(item.Get_naam());
+        }
+
+        return namen;
     }
 
     public ArrayList<Hoofdgerecht> GetHoofdgerechten(){
