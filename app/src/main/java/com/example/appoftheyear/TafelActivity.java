@@ -26,7 +26,10 @@ public class TafelActivity extends AppCompatActivity {
 
 //    private final LinkedList<Voorgerecht> voorgerechten = new LinkedList<>();
     private static MenuKaart menuKaart;
-    private ArrayList<String> voorgerechtNamen;
+    private ArrayList<String> _voorgerechtNamen;
+    private ArrayList<String> _hoofdgerechtNamen;
+    private ArrayList<String> _dessertNamen;
+    private ArrayList<String> _drinksNamen;
 
 
 
@@ -42,8 +45,14 @@ public class TafelActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.myViewPager);
+
         menuKaart = new MenuKaart();
-        voorgerechtNamen = menuKaart.GetVoorgerechtNamen();
+
+        _voorgerechtNamen = menuKaart.GetVoorgerechtNamen();
+        _hoofdgerechtNamen = menuKaart.GetHoofdgerechtNamen();
+        _dessertNamen = menuKaart.GetDessertNamen();
+        _drinksNamen = menuKaart.GetDrinksNamen();
+
 
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -66,16 +75,28 @@ public class TafelActivity extends AppCompatActivity {
 
 
         Bundle args = new Bundle();
-        args.putStringArrayList("voorgerechtNamen", voorgerechtNamen);
+        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
+        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
+        args.putStringArrayList("dessertNamen", _dessertNamen);
+        args.putStringArrayList("drinksNamen", _drinksNamen);
+
         Fragment voorgerechtenFragment = new VoorgerechtenFragment();
         viewPagerAdapter.addFragement(voorgerechtenFragment, "VOORGERECHTEN");
 //        viewPagerAdapter.addFragement(new VoorgerechtenFragment(), "VOORGERECHTEN");
         voorgerechtenFragment.setArguments(args);
 
+        Fragment hoofdgerechtenFragment = new HoofdgerechtenFragment();
+        viewPagerAdapter.addFragement(hoofdgerechtenFragment,"HOOFGERECHTEN");
+        hoofdgerechtenFragment.setArguments(args);
+//
+        Fragment dessertenFragment = new DessertFragment();
+        viewPagerAdapter.addFragement(dessertenFragment,"DESSERTEN");
+        dessertenFragment.setArguments(args);
 
-        viewPagerAdapter.addFragement(new HoofdgerechtenFragment(),"HOOFGERECHTEN");
-        viewPagerAdapter.addFragement(new DessertFragment(),"DESSERTEN");
-        viewPagerAdapter.addFragement(new DrinksFragment(),"DRINKS");
+        Fragment drinksFragment = new DrinksFragment();
+        viewPagerAdapter.addFragement(drinksFragment,"DRINKS");
+        drinksFragment.setArguments(args);
+
         viewPagerAdapter.addFragement(new BestellingFragment(),"BESTELLINGEN");
         viewPager.setAdapter(viewPagerAdapter);
 

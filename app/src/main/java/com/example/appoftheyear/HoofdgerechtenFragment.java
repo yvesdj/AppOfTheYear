@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -15,6 +19,8 @@ import android.view.ViewGroup;
  */
 public class HoofdgerechtenFragment extends Fragment {
 
+    private ListView menuListView ;
+    private ArrayList<String> _hoofdgerechten;
 
     public HoofdgerechtenFragment() {
         // Required empty public constructor
@@ -22,10 +28,18 @@ public class HoofdgerechtenFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hoofdgerechten, container, false);
+        View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+        _hoofdgerechten = (ArrayList<String>)getArguments().getSerializable("hoofdgerechtNamen");
+
+        menuListView = view.findViewById( R.id.menuListView );
+
+        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _hoofdgerechten);
+        menuListView.setAdapter( menuAdapter );
+
+        return view;
     }
 
 }

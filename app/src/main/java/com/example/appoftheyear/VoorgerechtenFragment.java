@@ -53,13 +53,4 @@ public class VoorgerechtenFragment extends Fragment {
         return view;
     }
 
-//    private ArrayList<String> getGerechtNaam(){
-//        ArrayList<String> namen = new ArrayList<String>();
-//        for (Voorgerecht voorgerecht : _voorgerechten) {
-//            namen.add(voorgerecht.Get_naam());
-//        }
-//
-//        return namen;
-//    }
-
 }

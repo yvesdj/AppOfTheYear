@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -15,6 +19,8 @@ import android.view.ViewGroup;
  */
 public class DessertFragment extends Fragment {
 
+    private ListView menuListView ;
+    private ArrayList<String> _desserten;
 
     public DessertFragment() {
         // Required empty public constructor
@@ -22,10 +28,18 @@ public class DessertFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dessert, container, false);
+        View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+        _desserten = (ArrayList<String>)getArguments().getSerializable("dessertNamen");
+
+        menuListView = view.findViewById( R.id.menuListView );
+
+        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _desserten);
+        menuListView.setAdapter( menuAdapter );
+
+        return view;
     }
 
 }

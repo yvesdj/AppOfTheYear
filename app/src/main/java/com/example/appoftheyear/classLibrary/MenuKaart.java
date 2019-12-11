@@ -26,6 +26,46 @@ public class MenuKaart {
 
     }
 
+    public ArrayList<String> GetVoorgerechtNamen(){
+        ArrayList<String> namen = new ArrayList<String>();
+        for (MenuItem item : _menuItems) {
+            if (item instanceof Voorgerecht)
+                namen.add(item.Get_naam());
+        }
+
+        return namen;
+    }
+
+    public ArrayList<String> GetHoofdgerechtNamen(){
+        ArrayList<String> namen = new ArrayList<String>();
+        for (MenuItem item : _menuItems) {
+            if (item instanceof Hoofdgerecht)
+                namen.add(item.Get_naam());
+        }
+
+        return namen;
+    }
+
+    public ArrayList<String> GetDessertNamen(){
+        ArrayList<String> namen = new ArrayList<String>();
+        for (MenuItem item : _menuItems) {
+            if (item instanceof Dessert)
+                namen.add(item.Get_naam());
+        }
+
+        return namen;
+    }
+
+    public ArrayList<String> GetDrinksNamen(){
+        ArrayList<String> namen = new ArrayList<String>();
+        for (MenuItem item : _menuItems) {
+            if (item instanceof Drink)
+                namen.add(item.Get_naam());
+        }
+
+        return namen;
+    }
+
     public ArrayList<Voorgerecht> GetVoorgerechten(){
         ArrayList<Voorgerecht> voorgerechten = new ArrayList<>();
         for (MenuItem item : _menuItems) {
@@ -34,16 +74,6 @@ public class MenuKaart {
             }
         }
         return voorgerechten;
-    }
-
-    public ArrayList<String> GetVoorgerechtNamen(){
-        ArrayList<String> namen = new ArrayList<String>();
-        for (MenuItem item : _menuItems) {
-            if (item instanceof Voorgerecht)
-            namen.add(item.Get_naam());
-        }
-
-        return namen;
     }
 
     public ArrayList<Hoofdgerecht> GetHoofdgerechten(){
