@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.TableLayout;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -31,7 +32,7 @@ public class TafelActivity extends AppCompatActivity {
     private ArrayList<String> _dessertNamen;
     private ArrayList<String> _drinksNamen;
 
-
+    private Tafel _dezeTafel;
 
 
     private TabLayout tabLayout;
@@ -53,6 +54,7 @@ public class TafelActivity extends AppCompatActivity {
         _dessertNamen = menuKaart.GetDessertNamen();
         _drinksNamen = menuKaart.GetDrinksNamen();
 
+        _dezeTafel = new Tafel();
 
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -65,13 +67,6 @@ public class TafelActivity extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-
-
-//        Bundle args = new Bundle();
-//        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
-//        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
-//        args.putStringArrayList("dessertNamen", _dessertNamen);
-//        args.putStringArrayList("drinksNamen", _drinksNamen);
         Bundle args = generateBundle();
 
         Fragment voorgerechtenFragment = new VoorgerechtenFragment();
@@ -104,5 +99,4 @@ public class TafelActivity extends AppCompatActivity {
         args.putStringArrayList("drinksNamen", _drinksNamen);
         return args;
     }
-
 }
