@@ -56,13 +56,6 @@ public class TafelActivity extends AppCompatActivity {
 
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-
-
-//        ArrayList<Hoofdgerecht> hoofdgerechten= menuKaart.GetHoofdgerechten();
-
         }
 
 
@@ -74,11 +67,12 @@ public class TafelActivity extends AppCompatActivity {
 
 
 
-        Bundle args = new Bundle();
-        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
-        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
-        args.putStringArrayList("dessertNamen", _dessertNamen);
-        args.putStringArrayList("drinksNamen", _drinksNamen);
+//        Bundle args = new Bundle();
+//        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
+//        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
+//        args.putStringArrayList("dessertNamen", _dessertNamen);
+//        args.putStringArrayList("drinksNamen", _drinksNamen);
+        Bundle args = generateBundle();
 
         Fragment voorgerechtenFragment = new VoorgerechtenFragment();
         viewPagerAdapter.addFragement(voorgerechtenFragment, "VOORGERECHTEN");
@@ -100,6 +94,15 @@ public class TafelActivity extends AppCompatActivity {
         viewPagerAdapter.addFragement(new BestellingFragment(),"BESTELLINGEN");
         viewPager.setAdapter(viewPagerAdapter);
 
+    }
+
+    private Bundle generateBundle(){
+        Bundle args = new Bundle();
+        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
+        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
+        args.putStringArrayList("dessertNamen", _dessertNamen);
+        args.putStringArrayList("drinksNamen", _drinksNamen);
+        return args;
     }
 
 }
