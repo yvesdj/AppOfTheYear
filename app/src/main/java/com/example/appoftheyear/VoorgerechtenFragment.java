@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.LinkedList;
 
@@ -20,7 +22,7 @@ import java.util.LinkedList;
  */
 public class VoorgerechtenFragment extends Fragment {
 
-
+    String items[] = new String[] {"Snoekbaars", "Zeevruchten", "Cul noir varken ","Bospaddenstoel", "St-Jacobsoester"};
 
     public VoorgerechtenFragment() {
         // Required empty public constructor
@@ -31,8 +33,14 @@ public class VoorgerechtenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+
+        ListView listview = (ListView)view.findViewById(R.id.listview);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,items);
+        listview.setAdapter(adapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+        return view;
 
 
 
