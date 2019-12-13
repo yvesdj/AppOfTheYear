@@ -31,9 +31,7 @@ public class MenuItem implements Parcelable {
 
     @Override
     public String toString(){
-        return _naam;
-
-
+        return this._naam + " [$" + this._prijs + "]";
     }
 
 

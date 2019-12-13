@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.TableLayout;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.tabs.TabLayout;
 
@@ -29,7 +30,8 @@ public class TafelActivity extends AppCompatActivity {
     private static MenuKaart menuKaart;
     private ArrayList<String> _voorgerechtNamen;
     private ArrayList<String> _hoofdgerechtNamen;
-    private ArrayList<String> _dessertNamen;
+//    private ArrayList<String> _dessertNamen;
+    private ArrayList<Dessert> _desserten;
     private ArrayList<String> _drinksNamen;
 
     private Tafel _dezeTafel;
@@ -52,7 +54,8 @@ public class TafelActivity extends AppCompatActivity {
 
         _voorgerechtNamen = menuKaart.GetVoorgerechtNamen();
         _hoofdgerechtNamen = menuKaart.GetHoofdgerechtNamen();
-        _dessertNamen = menuKaart.GetDessertNamen();
+//        _dessertNamen = menuKaart.GetDessertNamen();
+        _desserten = menuKaart.GetDesserten();
         _drinksNamen = menuKaart.GetDrinksNamen();
 
         _dezeTafel = new Tafel();
@@ -99,11 +102,15 @@ public class TafelActivity extends AppCompatActivity {
     private Bundle generateBundle(){
         Bundle args = new Bundle();
         args.putParcelable("tafel", _dezeTafel);
+//        args.putStringArrayList("besteldeItems", _bestellingNamen);
+
         args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
         args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
-        args.putStringArrayList("dessertNamen", _dessertNamen);
+
+//        args.putStringArrayList("dessertNamen", _dessertNamen);
+        args.putParcelableArrayList("desserten", _desserten);
+
         args.putStringArrayList("drinksNamen", _drinksNamen);
-//        args.putStringArrayList("besteldeItems", _bestellingNamen);
         return args;
     }
 }

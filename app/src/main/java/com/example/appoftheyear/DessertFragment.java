@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.Tafel;
 
@@ -25,7 +26,8 @@ import java.util.ArrayList;
 public class DessertFragment extends Fragment {
 
     private ListView menuListView ;
-    private ArrayList<String> _desserten;
+//    private ArrayList<String> _desserten;
+    private ArrayList<Dessert> _desserten;
     private Tafel _tafel;
 
     public DessertFragment() {
@@ -38,21 +40,22 @@ public class DessertFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-        _desserten = (ArrayList<String>)getArguments().getSerializable("dessertNamen");
+//        _desserten = (ArrayList<String>)getArguments().getSerializable("dessertNamen");
+        _desserten = getArguments().getParcelableArrayList("desserten");
         _tafel = getArguments().getParcelable("tafel");
 
         menuListView = view.findViewById( R.id.menuListView );
 
-        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _desserten);
+//        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _desserten);
+        ArrayAdapter<Dessert> menuAdapter = new ArrayAdapter<Dessert>(getActivity(), R.layout.menulist_item, _desserten);
         menuListView.setAdapter( menuAdapter );
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = (String)parent.getItemAtPosition(position);
-                Log.d("ItemClick", clickedItem);
-                _tafel.AddMenuItem(new MenuItem(clickedItem, 0)); //Solidify
+                Dessert clickedItem =  (Dessert) parent.getItemAtPosition(position);
 
+                _tafel.AddMenuItem(clickedItem);
             }
         });
 

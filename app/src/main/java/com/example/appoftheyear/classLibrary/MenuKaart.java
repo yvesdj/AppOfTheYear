@@ -22,9 +22,6 @@ public class MenuKaart {
         _menuItems = menuItems;
     }
 
-    public void ToonMenu(ArrayList<MenuItem> menuItems){
-
-    }
 
     public ArrayList<String> GetVoorgerechtNamen(){
         ArrayList<String> namen = new ArrayList<String>();
