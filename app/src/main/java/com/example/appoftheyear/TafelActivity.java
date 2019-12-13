@@ -1,38 +1,20 @@
 package com.example.appoftheyear;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TableLayout;
-import androidx.appcompat.widget.Toolbar;
 
-import com.example.appoftheyear.classLibrary.Dessert;
+import com.example.appoftheyear.classLibrary.MenuKaart;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.tabs.TabLayout;
 
-
-import com.example.appoftheyear.classLibrary.Hoofdgerecht;
-import com.example.appoftheyear.classLibrary.MenuItem;
-import com.example.appoftheyear.classLibrary.MenuKaart;
-import com.example.appoftheyear.classLibrary.Voorgerecht;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 public class TafelActivity extends AppCompatActivity {
 
 //    private final LinkedList<Voorgerecht> voorgerechten = new LinkedList<>();
     private static MenuKaart menuKaart;
-    private ArrayList<String> _voorgerechtNamen;
-    private ArrayList<String> _hoofdgerechtNamen;
-//    private ArrayList<String> _dessertNamen;
-    private ArrayList<Dessert> _desserten;
-    private ArrayList<String> _drinksNamen;
+
 
     private Tafel _dezeTafel;
 //    private ArrayList<String> _bestellingNamen;
@@ -51,12 +33,6 @@ public class TafelActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.myViewPager);
 
         menuKaart = new MenuKaart();
-
-        _voorgerechtNamen = menuKaart.GetVoorgerechtNamen();
-        _hoofdgerechtNamen = menuKaart.GetHoofdgerechtNamen();
-//        _dessertNamen = menuKaart.GetDessertNamen();
-        _desserten = menuKaart.GetDesserten();
-        _drinksNamen = menuKaart.GetDrinksNamen();
 
         _dezeTafel = new Tafel();
 //        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
@@ -104,13 +80,13 @@ public class TafelActivity extends AppCompatActivity {
         args.putParcelable("tafel", _dezeTafel);
 //        args.putStringArrayList("besteldeItems", _bestellingNamen);
 
-        args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
-        args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
+        args.putParcelableArrayList("voorgerechten", menuKaart.GetVoorgerechten());
+        args.putParcelableArrayList("hoofdgerechten", menuKaart.GetHoofdgerechten());
 
 //        args.putStringArrayList("dessertNamen", _dessertNamen);
-        args.putParcelableArrayList("desserten", _desserten);
+        args.putParcelableArrayList("desserten", menuKaart.GetDesserten());
 
-        args.putStringArrayList("drinksNamen", _drinksNamen);
+        args.putParcelableArrayList("drinks", menuKaart.GetDrinks());
         return args;
     }
 }

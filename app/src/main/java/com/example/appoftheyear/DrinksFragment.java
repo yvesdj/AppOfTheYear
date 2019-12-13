@@ -13,6 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.Drink;
+import com.example.appoftheyear.classLibrary.Tafel;
+import com.example.appoftheyear.classLibrary.Voorgerecht;
+
 import java.util.ArrayList;
 
 
@@ -22,7 +26,9 @@ import java.util.ArrayList;
 public class DrinksFragment extends Fragment {
 
     private ListView menuListView ;
-    private ArrayList<String> _drinks;
+//    private ArrayList<String> _drinks;
+    private ArrayList<Drink> _drinks;
+    private Tafel _tafel;
 
     public DrinksFragment() {
         // Required empty public constructor
@@ -34,19 +40,20 @@ public class DrinksFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-        _drinks = (ArrayList<String>)getArguments().getSerializable("drinksNamen");
+        _drinks = getArguments().getParcelableArrayList("drinks");
+        _tafel = getArguments().getParcelable("tafel");
 
         menuListView = view.findViewById( R.id.menuListView );
 
-        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _drinks);
+        ArrayAdapter<Drink> menuAdapter = new ArrayAdapter<Drink>(getActivity(), R.layout.menulist_item, _drinks);
         menuListView.setAdapter( menuAdapter );
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = (String)parent.getItemAtPosition(position);
-                Log.d("ItemClick", clickedItem);
+                Drink clickedItem =  (Drink) parent.getItemAtPosition(position);
 
+                _tafel.AddMenuItem(clickedItem);
             }
         });
 

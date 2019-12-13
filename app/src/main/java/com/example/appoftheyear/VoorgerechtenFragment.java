@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.Hoofdgerecht;
+import com.example.appoftheyear.classLibrary.Tafel;
 import com.example.appoftheyear.classLibrary.Voorgerecht;
 
 import java.lang.reflect.Array;
@@ -31,7 +33,9 @@ import java.util.LinkedList;
 public class VoorgerechtenFragment extends Fragment {
 
     private ListView menuListView ;
-    private ArrayList<String> _voorgerechten;
+//    private ArrayList<String> _voorgerechten;
+    private ArrayList<Voorgerecht> _voorgerechten;
+    private Tafel _tafel;
 
 
     public VoorgerechtenFragment() {
@@ -44,19 +48,20 @@ public class VoorgerechtenFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-        _voorgerechten = (ArrayList<String>)getArguments().getSerializable("voorgerechtNamen");
+        _voorgerechten = getArguments().getParcelableArrayList("voorgerechten");
+        _tafel = getArguments().getParcelable("tafel");
 
         menuListView = view.findViewById( R.id.menuListView );
 
-        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _voorgerechten);
+        ArrayAdapter<Voorgerecht> menuAdapter = new ArrayAdapter<Voorgerecht>(getActivity(), R.layout.menulist_item, _voorgerechten);
         menuListView.setAdapter( menuAdapter );
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = (String)parent.getItemAtPosition(position);
-                Log.d("ItemClick", clickedItem);
+                Voorgerecht clickedItem =  (Voorgerecht) parent.getItemAtPosition(position);
 
+                _tafel.AddMenuItem(clickedItem);
             }
         });
 

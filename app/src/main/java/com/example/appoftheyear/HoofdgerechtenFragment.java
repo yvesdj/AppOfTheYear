@@ -13,6 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.Dessert;
+import com.example.appoftheyear.classLibrary.Hoofdgerecht;
+import com.example.appoftheyear.classLibrary.Tafel;
+
 import java.util.ArrayList;
 
 
@@ -22,7 +26,9 @@ import java.util.ArrayList;
 public class HoofdgerechtenFragment extends Fragment {
 
     private ListView menuListView ;
-    private ArrayList<String> _hoofdgerechten;
+//    private ArrayList<String> _hoofdgerechten;
+    private ArrayList<Hoofdgerecht> _hoofdgerechten;
+    private Tafel _tafel;
 
     public HoofdgerechtenFragment() {
         // Required empty public constructor
@@ -34,19 +40,21 @@ public class HoofdgerechtenFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-        _hoofdgerechten = (ArrayList<String>)getArguments().getSerializable("hoofdgerechtNamen");
+//        _hoofdgerechten = (ArrayList<String>)getArguments().getSerializable("hoofdgerechtNamen");
+        _hoofdgerechten = getArguments().getParcelableArrayList("hoofdgerechten");
+        _tafel = getArguments().getParcelable("tafel");
 
         menuListView = view.findViewById( R.id.menuListView );
 
-        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _hoofdgerechten);
+        ArrayAdapter<Hoofdgerecht> menuAdapter = new ArrayAdapter<Hoofdgerecht>(getActivity(), R.layout.menulist_item, _hoofdgerechten);
         menuListView.setAdapter( menuAdapter );
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String clickedItem = (String)parent.getItemAtPosition(position);
-                Log.d("ItemClick", clickedItem);
+                Hoofdgerecht clickedItem =  (Hoofdgerecht) parent.getItemAtPosition(position);
 
+                _tafel.AddMenuItem(clickedItem);
             }
         });
 

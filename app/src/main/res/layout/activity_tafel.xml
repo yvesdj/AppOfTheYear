@@ -70,15 +70,7 @@
 
 
         </androidx.viewpager.widget.ViewPager>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginBottom="228dp" />
+        
     </LinearLayout>
 
 
