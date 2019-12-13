@@ -33,7 +33,7 @@ public class TafelActivity extends AppCompatActivity {
     private ArrayList<String> _drinksNamen;
 
     private Tafel _dezeTafel;
-    private ArrayList<String> _bestellingNamen;
+//    private ArrayList<String> _bestellingNamen;
 
 
     private TabLayout tabLayout;
@@ -56,7 +56,7 @@ public class TafelActivity extends AppCompatActivity {
         _drinksNamen = menuKaart.GetDrinksNamen();
 
         _dezeTafel = new Tafel();
-        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
+//        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
 
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -98,11 +98,12 @@ public class TafelActivity extends AppCompatActivity {
 
     private Bundle generateBundle(){
         Bundle args = new Bundle();
+        args.putParcelable("tafel", _dezeTafel);
         args.putStringArrayList("voorgerechtNamen", _voorgerechtNamen);
         args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
         args.putStringArrayList("dessertNamen", _dessertNamen);
         args.putStringArrayList("drinksNamen", _drinksNamen);
-        args.putStringArrayList("besteldeItems", _bestellingNamen);
+//        args.putStringArrayList("besteldeItems", _bestellingNamen);
         return args;
     }
 }

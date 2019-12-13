@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.Tafel;
+
 import java.util.ArrayList;
 
 
@@ -23,6 +25,7 @@ public class BestellingFragment extends Fragment {
 
     private ListView menuListView ;
     private ArrayList<String> _besteldeItems;
+    private Tafel _tafel;
 
     public BestellingFragment() {
         // Required empty public constructor
@@ -33,7 +36,9 @@ public class BestellingFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-        _besteldeItems = (ArrayList<String>)getArguments().getSerializable("besteldeItems");
+//        _besteldeItems = (ArrayList<String>)getArguments().getSerializable("besteldeItems");
+        _tafel = getArguments().getParcelable("tafel");
+        _besteldeItems = _tafel.GetBestellingenNamen();
 
         menuListView = view.findViewById( R.id.menuListView );
 

@@ -13,6 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.appoftheyear.classLibrary.MenuItem;
+import com.example.appoftheyear.classLibrary.Tafel;
+
 import java.util.ArrayList;
 
 
@@ -23,6 +26,7 @@ public class DessertFragment extends Fragment {
 
     private ListView menuListView ;
     private ArrayList<String> _desserten;
+    private Tafel _tafel;
 
     public DessertFragment() {
         // Required empty public constructor
@@ -35,6 +39,7 @@ public class DessertFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
         _desserten = (ArrayList<String>)getArguments().getSerializable("dessertNamen");
+        _tafel = getArguments().getParcelable("tafel");
 
         menuListView = view.findViewById( R.id.menuListView );
 
@@ -46,6 +51,7 @@ public class DessertFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String clickedItem = (String)parent.getItemAtPosition(position);
                 Log.d("ItemClick", clickedItem);
+                _tafel.AddMenuItem(new MenuItem(clickedItem, 0)); //Solidify
 
             }
         });

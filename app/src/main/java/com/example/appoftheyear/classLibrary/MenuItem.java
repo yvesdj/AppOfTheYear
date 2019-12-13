@@ -1,6 +1,9 @@
 package com.example.appoftheyear.classLibrary;
 
-public abstract class MenuItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MenuItem implements Parcelable {
     private String _naam;
 
     public String Get_naam() {
@@ -35,4 +38,33 @@ public abstract class MenuItem {
 
 
 
+
+    protected MenuItem(Parcel in) {
+        _naam = in.readString();
+        _prijs = in.readFloat();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_naam);
+        dest.writeFloat(_prijs);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<MenuItem> CREATOR = new Parcelable.Creator<MenuItem>() {
+        @Override
+        public MenuItem createFromParcel(Parcel in) {
+            return new MenuItem(in);
+        }
+
+        @Override
+        public MenuItem[] newArray(int size) {
+            return new MenuItem[size];
+        }
+    };
 }
