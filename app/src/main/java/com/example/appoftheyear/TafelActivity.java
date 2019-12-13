@@ -33,6 +33,7 @@ public class TafelActivity extends AppCompatActivity {
     private ArrayList<String> _drinksNamen;
 
     private Tafel _dezeTafel;
+    private ArrayList<String> _bestellingNamen;
 
 
     private TabLayout tabLayout;
@@ -55,6 +56,7 @@ public class TafelActivity extends AppCompatActivity {
         _drinksNamen = menuKaart.GetDrinksNamen();
 
         _dezeTafel = new Tafel();
+        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
 
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
@@ -86,7 +88,10 @@ public class TafelActivity extends AppCompatActivity {
         viewPagerAdapter.addFragement(drinksFragment,"DRINKS");
         drinksFragment.setArguments(args);
 
-        viewPagerAdapter.addFragement(new BestellingFragment(),"BESTELLINGEN");
+        Fragment bestellingFragment = new BestellingFragment();
+        viewPagerAdapter.addFragement(bestellingFragment,"BESTELLINGEN");
+        bestellingFragment.setArguments(args);
+
         viewPager.setAdapter(viewPagerAdapter);
 
     }
@@ -97,6 +102,7 @@ public class TafelActivity extends AppCompatActivity {
         args.putStringArrayList("hoofdgerechtNamen", _hoofdgerechtNamen);
         args.putStringArrayList("dessertNamen", _dessertNamen);
         args.putStringArrayList("drinksNamen", _drinksNamen);
+        args.putStringArrayList("besteldeItems", _bestellingNamen);
         return args;
     }
 }

@@ -5,9 +5,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -38,6 +40,15 @@ public class HoofdgerechtenFragment extends Fragment {
 
         ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _hoofdgerechten);
         menuListView.setAdapter( menuAdapter );
+
+        menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem = (String)parent.getItemAtPosition(position);
+                Log.d("ItemClick", clickedItem);
+
+            }
+        });
 
         return view;
     }

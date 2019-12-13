@@ -5,9 +5,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -15,17 +21,35 @@ import android.view.ViewGroup;
  */
 public class BestellingFragment extends Fragment {
 
+    private ListView menuListView ;
+    private ArrayList<String> _besteldeItems;
 
     public BestellingFragment() {
         // Required empty public constructor
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bestelling, container, false);
+        View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+        _besteldeItems = (ArrayList<String>)getArguments().getSerializable("besteldeItems");
+
+        menuListView = view.findViewById( R.id.menuListView );
+
+        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _besteldeItems);
+        menuListView.setAdapter( menuAdapter );
+
+        menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem = (String)parent.getItemAtPosition(position);
+                Log.d("ItemClick", clickedItem);
+
+            }
+        });
+
+        return view;
     }
 
 }

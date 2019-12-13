@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -49,6 +50,15 @@ public class VoorgerechtenFragment extends Fragment {
 
         ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _voorgerechten);
         menuListView.setAdapter( menuAdapter );
+
+        menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String clickedItem = (String)parent.getItemAtPosition(position);
+                Log.d("ItemClick", clickedItem);
+
+            }
+        });
 
         return view;
     }
