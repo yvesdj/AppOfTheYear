@@ -1,6 +1,8 @@
 package com.example.appoftheyear;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.example.appoftheyear.classLibrary.MenuKaart;
 import com.example.appoftheyear.classLibrary.Tafel;
@@ -28,13 +30,19 @@ public class TafelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tafel);
 
+        _dezeTafel = getIntent().getParcelableExtra("tafel");
+
+        TextView tafelTitle = findViewById(R.id.TafelTitel);
+        tafelTitle.setText("Tafel " + (_dezeTafel.Get_tafelId()+1));
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = (ViewPager) findViewById(R.id.myViewPager);
 
         menuKaart = new MenuKaart();
 
-        _dezeTafel = new Tafel();
+
+        Log.d("Tafels", String.valueOf(_dezeTafel.Get_tafelId()));
+
 //        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
 
         setViewPager(viewPager);

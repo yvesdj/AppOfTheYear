@@ -62,7 +62,7 @@
 
                 >
                 <ImageButton
-                    android:id="@+id/Tafel1"
+                    android:id="@+id/Tafel0"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:background="@drawable/tableicon"
@@ -70,7 +70,7 @@
                     android:layout_gravity="center_horizontal"
                     />
                 <TextView
-                    android:id="@+id/Tafel1Text"
+                    android:id="@+id/Tafel0Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="40sp"
@@ -86,15 +86,15 @@
 
                 >
                 <ImageButton
-                    android:id="@+id/Tafel2"
+                    android:id="@+id/Tafel1"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:background="@drawable/tableicon"
-
+                    android:onClick="GaNaarTafel"
                     android:layout_gravity="center_horizontal"
                     />
                 <TextView
-                    android:id="@+id/Tafel2Text"
+                    android:id="@+id/Tafel1Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="40dp"
@@ -110,15 +110,15 @@
 
                 >
                 <ImageButton
-                    android:id="@+id/Tafel3"
+                    android:id="@+id/Tafel2"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:background="@drawable/tableicon"
-
+                    android:onClick="GaNaarTafel"
                     android:layout_gravity="center_horizontal"
                     />
                 <TextView
-                    android:id="@+id/Tafel3Text"
+                    android:id="@+id/Tafel2Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="40dp"
@@ -144,15 +144,15 @@
 
                     >
                     <ImageButton
-                        android:id="@+id/Tafel4"
+                        android:id="@+id/Tafel3"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/tableicon"
-
+                        android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
                         />
                     <TextView
-                        android:id="@+id/Tafel4Text"
+                        android:id="@+id/Tafel3Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="40dp"
@@ -168,15 +168,15 @@
 
                     >
                     <ImageButton
-                        android:id="@+id/Tafel5"
+                        android:id="@+id/Tafel4"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/tableicon"
-
+                        android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
                         />
                     <TextView
-                        android:id="@+id/Tafel5Text"
+                        android:id="@+id/Tafel4Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="40dp"
@@ -192,15 +192,15 @@
 
                     >
                     <ImageButton
-                        android:id="@+id/Tafel6"
+                        android:id="@+id/Tafel5"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:background="@drawable/tableicon"
-
+                        android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
                         />
                     <TextView
-                        android:id="@+id/Tafel6Text"
+                        android:id="@+id/Tafel5Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="40dp"

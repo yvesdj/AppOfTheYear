@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class Tafel implements Parcelable {
     private int _tafelId;
 
+    public int Get_tafelId() { return _tafelId;}
     public void Set_tafelId(int _tafelId) {
         this._tafelId = _tafelId;
     }
+
 
     private ArrayList<MenuItem> _tafelItems;
 
@@ -31,6 +33,11 @@ public class Tafel implements Parcelable {
     }
 
     public Tafel(){
+        _tafelItems = new ArrayList<>();
+    }
+
+    public Tafel(int tafelId){
+        _tafelId = tafelId;
         _tafelItems = new ArrayList<>();
     }
 
