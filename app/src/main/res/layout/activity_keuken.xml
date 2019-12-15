@@ -8,44 +8,79 @@
     tools:context=".KeukenActivity">
 
 
+    <ListView
+        android:id="@+id/Btafel4"
+        android:layout_width="0dp"
+        android:layout_height="510dp"
+        android:layout_marginEnd="410dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/keuken_view"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/keuken_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="173dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="233dp"
         android:text="@string/keuken"
         android:textColor="#000000"
-        android:textSize="60sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/inkomend_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/inkomend"
-
-
-        android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/keuken_view" />
 
     <View
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="8dp"
         android:background="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inkomend_label"
 
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keuken_view" />
+
+
+    <ListView
+        android:id="@+id/Btafel1"
+        android:layout_width="200dp"
+        android:layout_height="455dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keuken_view" />
+
+    <ListView
+        android:id="@+id/Btafel2"
+        android:layout_width="210dp"
+        android:layout_height="455dp"
+        android:layout_marginEnd="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keuken_view">
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/Btafel3"
+        android:layout_width="200dp"
+        android:layout_height="455dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keuken_view" />
+
+    <ListView
+        android:id="@+id/Btafel5"
+        android:layout_width="200dp"
+        android:layout_height="510dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/Btafel6"
+        android:layout_width="200dp"
+        android:layout_height="510dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
