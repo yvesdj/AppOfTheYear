@@ -1,5 +1,7 @@
 package com.example.appoftheyear;
 
+import java.lang.reflect.*;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
+import java.lang.reflect.Constructor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -73,20 +77,41 @@ public class TafelActivity extends AppCompatActivity {
 //                    Log.d("DBTest", category);
 
                     for (DataSnapshot itemSnapshot : dataSnapshot.child(category).getChildren()){
-                        String typeOfItem = itemSnapshot.getKey();
 
+                        String naam = String.valueOf(itemSnapshot.child("naam").getValue());
+                        float prijs = Float.valueOf(String.valueOf(itemSnapshot.child("prijs").getValue()));
+
+                        Class itemCategory = null;
                         try {
-                            Object item = Class.forName("com.example.appoftheyear.classLibrary." + category).newInstance();
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InstantiationException e) {
-                            e.printStackTrace();
+                            itemCategory = Class.forName("com.example.appoftheyear.classLibrary." + category);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
 
+                        // I need an array as follows to describe the signature
+                        Class[] parameters = new Class[] {String.class, float.class};
 
-                        Log.d("DBTest", typeOfItem);
+                        // Now I can get a reference to the right constructor
+                        Constructor constructor = null;
+                        try {
+                            constructor = itemCategory.getConstructor(parameters);
+                        } catch (NoSuchMethodException e) {
+                            e.printStackTrace();
+                        }
+
+                        // And I can use that Constructor to instantiate the class
+                        Object menuItem = null;
+                        try {
+                            menuItem = constructor.newInstance(new Object[] {naam, prijs});
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InstantiationException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                        Log.d("DBTest", String.valueOf(menuItem));
+                        Log.d("DBTest", menuItem.toString());
                     }
 
 //                    String naam = (String)itemSnapshot.child("naam").getValue();
