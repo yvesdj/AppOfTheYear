@@ -7,6 +7,11 @@ import android.widget.TextView;
 import com.example.appoftheyear.classLibrary.MenuKaart;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -40,17 +45,10 @@ public class TafelActivity extends AppCompatActivity {
 
         menuKaart = new MenuKaart();
 
-
-        Log.d("Tafels", String.valueOf(_dezeTafel.Get_tafelId()));
-
-//        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
-
         setViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+        basicReadWrite();
         }
-
-
-
 
     private void setViewPager(ViewPager viewPager){
 
@@ -97,4 +95,34 @@ public class TafelActivity extends AppCompatActivity {
         args.putParcelableArrayList("drinks", menuKaart.GetDrinks());
         return args;
     }
+
+    public void basicReadWrite() {
+        // [START write_message]
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
+        // [END write_message]
+
+        // [START read_message]
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d("DBTest", "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("DBTest", "Failed to read value.", error.toException());
+            }
+        });
+        // [END read_message]
+    }
+
 }

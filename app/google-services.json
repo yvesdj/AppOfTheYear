@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "495864356317",
+    "firebase_url": "https://appoftheyear-b463c.firebaseio.com",
+    "project_id": "appoftheyear-b463c",
+    "storage_bucket": "appoftheyear-b463c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495864356317:android:bc9697055097bc2fa62a34",
+        "android_client_info": {
+          "package_name": "com.example.appoftheyear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495864356317-59eqqtt99apk2inodua7ppj2sqm34su7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appoftheyear",
+            "certificate_hash": "8362784b6b409189edcb8a67dd8a305513526ac8"
+          }
+        },
+        {
+          "client_id": "495864356317-9qnb8qca495jmi5e1tt2ukdv7hog372r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appoftheyear",
+            "certificate_hash": "005f14c8fdc4cf38ebf3757f9c0daba90ccfad32"
+          }
+        },
+        {
+          "client_id": "495864356317-ijo1vl8g2qrliem3mv8dj34m0h5a4bd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz3t-ezqeDXAVIilF7Ssde4oA9K8clMXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495864356317-ijo1vl8g2qrliem3mv8dj34m0h5a4bd9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
