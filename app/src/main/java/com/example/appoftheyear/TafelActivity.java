@@ -50,14 +50,8 @@ public class TafelActivity extends AppCompatActivity {
         TextView tafelTitle = findViewById(R.id.TafelTitel);
         tafelTitle.setText("Tafel " + (_dezeTafel.Get_tafelId()+1));
 
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = (ViewPager) findViewById(R.id.myViewPager);
 
         menuKaart = new MenuKaart();
-
-        setViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
-
         }
     @Override
     public void onStart() {
@@ -68,30 +62,30 @@ public class TafelActivity extends AppCompatActivity {
 
         // [START basic_query_value_listener]
         // My top posts by number of stars
-        menuVoorgerechten.addValueEventListener(new ValueEventListener() {
+        menuVoorgerechten.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
-
+                    // Get child of Menu name which is the class name
                     String category = categorySnapshot.getKey();
 //                    Log.d("DBTest", category);
 
                     for (DataSnapshot itemSnapshot : dataSnapshot.child(category).getChildren()){
-
+                        // Retrieve data from category children
                         String naam = String.valueOf(itemSnapshot.child("naam").getValue());
                         float prijs = Float.valueOf(String.valueOf(itemSnapshot.child("prijs").getValue()));
 
+                        // See if child of menu == one of my classes
                         Class itemCategory = null;
                         try {
                             itemCategory = Class.forName("com.example.appoftheyear.classLibrary." + category);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
-
-                        // I need an array as follows to describe the signature
+                        // define my constructor
                         Class[] parameters = new Class[] {String.class, float.class};
 
-                        // Now I can get a reference to the right constructor
+                        // bind constructor to my object
                         Constructor constructor = null;
                         try {
                             constructor = itemCategory.getConstructor(parameters);
@@ -99,7 +93,7 @@ public class TafelActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        // And I can use that Constructor to instantiate the class
+                        // instantiate
                         Object menuItem = null;
                         try {
                             menuItem = constructor.newInstance(new Object[] {naam, prijs});
@@ -110,17 +104,17 @@ public class TafelActivity extends AppCompatActivity {
                         } catch (InvocationTargetException e) {
                             e.printStackTrace();
                         }
-                        Log.d("DBTest", String.valueOf(menuItem));
+                        menuKaart.AddMenuItem((MenuItem) menuItem);
                         Log.d("DBTest", menuItem.toString());
                     }
-
-//                    String naam = (String)itemSnapshot.child("naam").getValue();
-//                    float prijs = itemSnapshot.child("prijs").getValue();
-//                    MenuItem item = itemSnapshot.getValue(MenuItem.class);
-//                    Log.d("DBTest", itemSnapshot.toString());
-//                    Log.d("DBTest", item.toString());
-
                 }
+                Log.d("DBTest", String.valueOf(menuKaart.GetDesserten()));
+
+                tabLayout = (TabLayout) findViewById(R.id.tablayout);
+                viewPager = (ViewPager) findViewById(R.id.myViewPager);
+
+                setViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
             }
 
             @Override
@@ -131,72 +125,7 @@ public class TafelActivity extends AppCompatActivity {
             }
         });
 
-//        ValueEventListener getMenu = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
-//
-//                    String naam = (String)itemSnapshot.child("naam").getValue();
-////                    float prijs = (float)itemSnapshot.child("prijs").getValue();
-//
-//                    MenuItem item = new MenuItem(naam, 5);
-//
-//                    Log.d("DBTest", itemSnapshot.toString());
-//                    Log.d("DBTest", item.toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//                Log.w("DBTest", "loadPost:onCancelled", databaseError.toException());
-//                // ...
-//            }
-//        };
-//        // [END basic_query_value_listener]
-//        _db.addListenerForSingleValueEvent(getMenu);
-//
-//        _getMenu = getMenu;
     }
-
-//    public void onStart() {
-//        super.onStart();
-//
-//        // Add value event listener to the post
-//        // [START post_value_event_listener]
-//        ValueEventListener postListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // Get Post object and use the values to update the UI
-//                Post post = dataSnapshot.getValue(Post.class);
-//                // [START_EXCLUDE]
-//                mAuthorView.setText(post.author);
-//                mTitleView.setText(post.title);
-//                mBodyView.setText(post.body);
-//                // [END_EXCLUDE]
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // Getting Post failed, log a message
-//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-//                // [START_EXCLUDE]
-//                Toast.makeText(PostDetailActivity.this, "Failed to load post.",
-//                        Toast.LENGTH_SHORT).show();
-//                // [END_EXCLUDE]
-//            }
-//        };
-//        mPostReference.addValueEventListener(postListener);
-//        // [END post_value_event_listener]
-//
-//        // Keep copy of post listener so we can remove it when app stops
-//        mPostListener = postListener;
-//
-//        // Listen for comments
-//        mAdapter = new CommentAdapter(this, mCommentsReference);
-//        mCommentsRecycler.setAdapter(mAdapter);
-//    }
-
 
     private void setViewPager(ViewPager viewPager){
 
@@ -206,13 +135,11 @@ public class TafelActivity extends AppCompatActivity {
 
         Fragment voorgerechtenFragment = new VoorgerechtenFragment();
         viewPagerAdapter.addFragement(voorgerechtenFragment, "VOORGERECHTEN");
-//        viewPagerAdapter.addFragement(new VoorgerechtenFragment(), "VOORGERECHTEN");
         voorgerechtenFragment.setArguments(args);
 
         Fragment hoofdgerechtenFragment = new HoofdgerechtenFragment();
         viewPagerAdapter.addFragement(hoofdgerechtenFragment,"HOOFGERECHTEN");
         hoofdgerechtenFragment.setArguments(args);
-//
         Fragment dessertenFragment = new DessertFragment();
         viewPagerAdapter.addFragement(dessertenFragment,"DESSERTEN");
         dessertenFragment.setArguments(args);
@@ -237,41 +164,9 @@ public class TafelActivity extends AppCompatActivity {
         args.putParcelableArrayList("voorgerechten", menuKaart.GetVoorgerechten());
         args.putParcelableArrayList("hoofdgerechten", menuKaart.GetHoofdgerechten());
 
-//        args.putStringArrayList("dessertNamen", _dessertNamen);
         args.putParcelableArrayList("desserten", menuKaart.GetDesserten());
 
         args.putParcelableArrayList("drinks", menuKaart.GetDrinks());
         return args;
     }
-
-//    public void onStart() {
-//        // [START write_message]
-//        // Write a message to the database
-//        super.onStart();
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World!");
-//        // [END write_message]
-//
-//        // [START read_message]
-//        // Read from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                Log.d("DBTest", "Value is: " + value);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.w("DBTest", "Failed to read value.", error.toException());
-//            }
-//        });
-//        // [END read_message]
-//    }
-
 }

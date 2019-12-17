@@ -7,19 +7,23 @@ public class MenuKaart {
 
     public MenuKaart() {
         _menuItems = new ArrayList<>();
-
-        _menuItems.add(new Voorgerecht("Kaaskroket", 5.50f));
-        _menuItems.add(new Voorgerecht("Garnaalkroket", 5.50f));
-        _menuItems.add(new Hoofdgerecht("Vol-au-vent", 10.50f));
-        _menuItems.add(new Hoofdgerecht("Steak", 28));
-        _menuItems.add(new Dessert("Ne Frisco", 4));
-        _menuItems.add(new Dessert("Cremeke me discobolle", 4));
-        _menuItems.add(new Drink("Das bier", 3.50f));
-        _menuItems.add(new Drink("Ne Scheven Tore", 5.50f));
+//
+//        _menuItems.add(new Voorgerecht("Kaaskroket", 5.50f));
+//        _menuItems.add(new Voorgerecht("Garnaalkroket", 5.50f));
+//        _menuItems.add(new Hoofdgerecht("Vol-au-vent", 10.50f));
+//        _menuItems.add(new Hoofdgerecht("Steak", 28));
+//        _menuItems.add(new Dessert("Ne Frisco", 4));
+//        _menuItems.add(new Dessert("Cremeke me discobolle", 4));
+//        _menuItems.add(new Drink("Das bier", 3.50f));
+//        _menuItems.add(new Drink("Ne Scheven Tore", 5.50f));
     }
 
     public MenuKaart(ArrayList<MenuItem> menuItems) {
         _menuItems = menuItems;
+    }
+
+    public void AddMenuItem(MenuItem item){
+        _menuItems.add(item);
     }
 
 
