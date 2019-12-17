@@ -48,7 +48,7 @@ public class TafelActivity extends AppCompatActivity {
         _dezeTafel = getIntent().getParcelableExtra("tafel");
 
         TextView tafelTitle = findViewById(R.id.TafelTitel);
-        tafelTitle.setText("Tafel " + (_dezeTafel.tafelId + 1));
+        tafelTitle.setText("Tafel " + (_dezeTafel.tafelId));
 
 
         menuKaart = new MenuKaart();
@@ -57,12 +57,12 @@ public class TafelActivity extends AppCompatActivity {
     public void onStart() {
 
         super.onStart();
-        Query menuVoorgerechten = _db.child("Menu2");
+        Query menu = _db.child("Menu2");
 
 
         // [START basic_query_value_listener]
         // My top posts by number of stars
-        menuVoorgerechten.addListenerForSingleValueEvent(new ValueEventListener() {
+        menu.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {

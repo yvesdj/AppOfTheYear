@@ -20,12 +20,20 @@ public class Tafel implements Parcelable {
     }
 
     public Tafel(){
-        tafelItems = new ArrayList<>();
+
     }
+//
+//    public Tafel(){
+//        tafelItems = new ArrayList<>();
+//    }
 
     public Tafel(int tafelId){
         this.tafelId = tafelId;
         tafelItems = new ArrayList<>();
+    }
+
+    public void AddMenuItem(MenuItem item){
+        tafelItems.add(item);
     }
 
     protected Tafel(Parcel in) {
@@ -36,10 +44,6 @@ public class Tafel implements Parcelable {
         } else {
             tafelItems = null;
         }
-    }
-
-    public void AddMenuItem(MenuItem item){
-        tafelItems.add(item);
     }
 
     @Override
