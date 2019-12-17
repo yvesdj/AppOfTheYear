@@ -50,8 +50,10 @@ public class TafelSelectorActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot tafelSnapshot : dataSnapshot.getChildren()){
+                    String tafelKey = tafelSnapshot.getKey();
                     int tafelId = Integer.valueOf(String.valueOf(tafelSnapshot.child("tafelId").getValue())) ;
-                    Tafel tafel = new Tafel(tafelId);
+
+                    Tafel tafel = new Tafel(tafelId, tafelKey);
 
                     _tafels.add(tafel);
                 }

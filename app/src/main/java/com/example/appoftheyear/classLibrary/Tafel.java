@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Tafel implements Parcelable {
     public int tafelId;
 
+    public String tafelKey;
 
     public ArrayList<MenuItem> tafelItems;
 
@@ -32,12 +33,19 @@ public class Tafel implements Parcelable {
         tafelItems = new ArrayList<>();
     }
 
+    public Tafel(int tafelId, String tafelKey){
+        this.tafelId = tafelId;
+        this.tafelKey = tafelKey;
+        tafelItems = new ArrayList<>();
+    }
+
     public void AddMenuItem(MenuItem item){
         tafelItems.add(item);
     }
 
     protected Tafel(Parcel in) {
         tafelId = in.readInt();
+        tafelKey = in.readString();
         if (in.readByte() == 0x01) {
             tafelItems = new ArrayList<MenuItem>();
             in.readList(tafelItems, MenuItem.class.getClassLoader());
@@ -54,6 +62,7 @@ public class Tafel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(tafelId);
+        dest.writeString(tafelKey);
         if (tafelItems == null) {
             dest.writeByte((byte) (0x00));
         } else {

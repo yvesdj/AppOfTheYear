@@ -16,6 +16,8 @@ import android.widget.ListView;
 import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.Tafel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class DessertFragment extends Fragment {
+
+    private DatabaseReference _db;
 
     private ListView menuListView ;
 //    private ArrayList<String> _desserten;
@@ -40,7 +44,9 @@ public class DessertFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-//        _desserten = (ArrayList<String>)getArguments().getSerializable("dessertNamen");
+
+        _db = FirebaseDatabase.getInstance().getReference();
+
         _desserten = getArguments().getParcelableArrayList("desserten");
         _tafel = getArguments().getParcelable("tafel");
 
@@ -54,12 +60,16 @@ public class DessertFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dessert clickedItem =  (Dessert) parent.getItemAtPosition(position);
-
-                _tafel.AddMenuItem(clickedItem);
+                addMenuItemToTable(clickedItem);
+//                _tafel.AddMenuItem(clickedItem);
             }
         });
 
         return view;
+    }
+
+    private void addMenuItemToTable(MenuItem item){
+        _db.child("Tafel").child(_tafel.tafelKey).child("Bestelde Items").push().setValue(item);
     }
 
 }
