@@ -27,7 +27,7 @@ public class Tafel implements Parcelable {
     public float berekenPrijs(){
         float totaalPrijs = 0;
         for (MenuItem item : _tafelItems) {
-            totaalPrijs += item.Get_prijs();
+            totaalPrijs += item.prijs;
         }
         return totaalPrijs;
     }
@@ -53,18 +53,6 @@ public class Tafel implements Parcelable {
 
     public void AddMenuItem(MenuItem item){
         _tafelItems.add(item);
-    }
-
-    public ArrayList<String> GetBestellingenNamen(){
-        ArrayList<String> bestellingNamen = new ArrayList<>();
-        bestellingNamen.add("Bestellingen");
-        if (_tafelItems != null){
-
-            for (MenuItem item: _tafelItems) {
-                bestellingNamen.add(item.Get_naam());
-            }
-        }
-        return bestellingNamen;
     }
 
     @Override
