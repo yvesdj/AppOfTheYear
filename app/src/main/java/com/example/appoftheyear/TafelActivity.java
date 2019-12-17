@@ -48,7 +48,7 @@ public class TafelActivity extends AppCompatActivity {
         _dezeTafel = getIntent().getParcelableExtra("tafel");
 
         TextView tafelTitle = findViewById(R.id.TafelTitel);
-        tafelTitle.setText("Tafel " + (_dezeTafel.Get_tafelId()+1));
+        tafelTitle.setText("Tafel " + (_dezeTafel.tafelId + 1));
 
 
         menuKaart = new MenuKaart();

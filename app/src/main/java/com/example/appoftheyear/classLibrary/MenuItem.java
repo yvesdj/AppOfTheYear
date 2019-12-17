@@ -19,7 +19,7 @@ public class MenuItem implements Parcelable {
 
     @Override
     public String toString(){
-        return this.naam + " [$" + this.prijs + "]";
+        return this.naam + " [€" + this.prijs + "]";
     }
 
 

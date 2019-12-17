@@ -42,7 +42,7 @@ public class BestellingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
 //        _besteldeItems = (ArrayList<String>)getArguments().getSerializable("besteldeItems");
         _tafel = getArguments().getParcelable("tafel");
-        _besteldeItems = _tafel.Get_tafelItems();
+        _besteldeItems = _tafel.tafelItems;
 
         menuListView = view.findViewById( R.id.menuListView );
 

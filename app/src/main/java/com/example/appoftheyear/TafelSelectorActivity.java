@@ -42,32 +42,32 @@ public class TafelSelectorActivity extends AppCompatActivity {
             case (R.id.Tafel0):
 //                generateBundle(0);
                 intent.putExtra("tafel", Tafels.get(0));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel1):
 //                generateBundle(1);
                 intent.putExtra("tafel", Tafels.get(1));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel2):
 //                generateBundle(2);
                 intent.putExtra("tafel", Tafels.get(2));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel3):
 //                generateBundle(3);
                 intent.putExtra("tafel", Tafels.get(3));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel4):
 //                generateBundle(4);
                 intent.putExtra("tafel", Tafels.get(4));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel5):
 //                generateBundle(5);
                 intent.putExtra("tafel", Tafels.get(5));
-                Log.d("Tafels", String.valueOf(Tafels.get(0).Get_tafelId()));
+                Log.d("Tafels", String.valueOf(Tafels.get(0).tafelId));
                 break;
         }
         startActivity(intent);

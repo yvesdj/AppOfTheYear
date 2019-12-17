@@ -6,53 +6,40 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class Tafel implements Parcelable {
-    private int _tafelId;
-
-    public int Get_tafelId() { return _tafelId;}
-    public void Set_tafelId(int _tafelId) {
-        this._tafelId = _tafelId;
-    }
+    public int tafelId;
 
 
-    private ArrayList<MenuItem> _tafelItems;
-
-    public ArrayList<MenuItem> Get_tafelItems() {
-        return _tafelItems;
-    }
-
-    public void Set_tafelItems(ArrayList<MenuItem> _tafelItems) {
-        this._tafelItems = _tafelItems;
-    }
+    public ArrayList<MenuItem> tafelItems;
 
     public float berekenPrijs(){
         float totaalPrijs = 0;
-        for (MenuItem item : _tafelItems) {
+        for (MenuItem item : tafelItems) {
             totaalPrijs += item.prijs;
         }
         return totaalPrijs;
     }
 
     public Tafel(){
-        _tafelItems = new ArrayList<>();
+        tafelItems = new ArrayList<>();
     }
 
     public Tafel(int tafelId){
-        _tafelId = tafelId;
-        _tafelItems = new ArrayList<>();
+        this.tafelId = tafelId;
+        tafelItems = new ArrayList<>();
     }
 
     protected Tafel(Parcel in) {
-        _tafelId = in.readInt();
+        tafelId = in.readInt();
         if (in.readByte() == 0x01) {
-            _tafelItems = new ArrayList<MenuItem>();
-            in.readList(_tafelItems, MenuItem.class.getClassLoader());
+            tafelItems = new ArrayList<MenuItem>();
+            in.readList(tafelItems, MenuItem.class.getClassLoader());
         } else {
-            _tafelItems = null;
+            tafelItems = null;
         }
     }
 
     public void AddMenuItem(MenuItem item){
-        _tafelItems.add(item);
+        tafelItems.add(item);
     }
 
     @Override
@@ -62,12 +49,12 @@ public class Tafel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(_tafelId);
-        if (_tafelItems == null) {
+        dest.writeInt(tafelId);
+        if (tafelItems == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeList(_tafelItems);
+            dest.writeList(tafelItems);
         }
     }
 
