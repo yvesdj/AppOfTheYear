@@ -2,6 +2,7 @@ package com.example.appoftheyear;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.TextView;
 
 import com.example.appoftheyear.classLibrary.Dessert;
@@ -27,6 +28,12 @@ import java.util.ArrayList;
 
 public class TafelActivity extends AppCompatActivity {
 
+    private MenuKaart menuKaart;
+    private Tafel _dezeTafel;
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+
     private static ArrayList<MenuItem> _menuItems;
     private  static ArrayList<Voorgerecht> _voorgerechten;
     private  static ArrayList<Hoofdgerecht> _hoofdgerechten;
@@ -34,23 +41,24 @@ public class TafelActivity extends AppCompatActivity {
     private static ArrayList<Dessert> _desserts;
 
     private DatabaseReference Voorgerechtendb = FirebaseDatabase.getInstance().getReference().child("Menu/Voorgerechten");
+    private DatabaseReference Hoofdgerechtendb = FirebaseDatabase.getInstance().getReference().child("Menu/Hoofdgerechten");
+    private DatabaseReference Dessertdb = FirebaseDatabase.getInstance().getReference().child("Menu/Dessert");
+    private DatabaseReference Drinkdb  = FirebaseDatabase.getInstance().getReference().child("Menu/Drinks");
 
 
-    private static MenuKaart menuKaart;
-
-
-    private Tafel _dezeTafel;
-
-
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tafel);
         _voorgerechten = new ArrayList<>();
+        _hoofdgerechten = new ArrayList<>();
+        _desserts = new ArrayList<>();
+        _drinks = new ArrayList<>();
+        menuKaart = new MenuKaart();
+
+
+
         Voorgerechtendb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -58,16 +66,82 @@ public class TafelActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
 
                     String naam = String.valueOf(dataSnapshot1.child("naam").getValue());
-                 //  float prijs = Float.valueOf(dataSnapshot1.child("prijs").getValue(float.class));
-                   float prijs = Float.valueOf(String.valueOf(dataSnapshot1.child("prijs").getValue()));
-                  // Voorgerecht voorgerecht = new Voorgerecht(naam,prijs);
-
+                  float prijs = Float.valueOf(String.valueOf(dataSnapshot1.child("prijs").getValue()));
                     _voorgerechten.add(new Voorgerecht(naam,prijs));
-                   // Log.d("voorgerechtdb", String.valueOf(voorgerecht));
+
+
                 }
 
-                menuKaart = new MenuKaart(_voorgerechten);
+                menuKaart.setVoorgerechten(_voorgerechten);
+                setViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Hoofdgerechtendb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+
+                    String naam = String.valueOf(dataSnapshot1.child("naam").getValue());
+                    float prijs = Float.valueOf(String.valueOf(dataSnapshot1.child("prijs").getValue()));
+                    _hoofdgerechten.add(new Hoofdgerecht(naam,prijs));
+
+                }
+
+                menuKaart.setHoofdgerechten(_hoofdgerechten);
+                setViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        Dessertdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+
+                    String naam = String.valueOf(dataSnapshot1.child("naam").getValue());
+                    float prijs = Float.valueOf(String.valueOf(dataSnapshot1.child("prijs").getValue()));
+                    _desserts.add(new Dessert(naam,prijs));
+
+                }
+
+                menuKaart.setDesserts(_desserts);
+                setViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Drinkdb.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+
+                    String naam = String.valueOf(dataSnapshot1.child("naam").getValue());
+                    float prijs = Float.valueOf(String.valueOf(dataSnapshot1.child("prijs").getValue()));
+                    _drinks.add(new Drink(naam,prijs));
+
+                }
+
+                menuKaart.setDrinks(_drinks);
+                setViewPager(viewPager);
+                tabLayout.setupWithViewPager(viewPager);
             }
 
             @Override
@@ -94,8 +168,6 @@ public class TafelActivity extends AppCompatActivity {
 
 //        _bestellingNamen = _dezeTafel.GetBestellingenNamen();
 
-        setViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
         }
 
 
@@ -131,19 +203,20 @@ public class TafelActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
 
     }
-
     private Bundle generateBundle(){
         Bundle args = new Bundle();
         args.putParcelable("tafel", _dezeTafel);
 //        args.putStringArrayList("besteldeItems", _bestellingNamen);
 
-        args.putParcelableArrayList("voorgerechten", menuKaart.GetVoorgerechten());
-        args.putParcelableArrayList("hoofdgerechten", menuKaart.GetHoofdgerechten());
+        args.putParcelableArrayList("voorgerechten", menuKaart.getVoorgerechten());
+        args.putParcelableArrayList("hoofdgerechten", menuKaart.getHoofdgerechten());
 
 //        args.putStringArrayList("dessertNamen", _dessertNamen);
-        args.putParcelableArrayList("desserten", menuKaart.GetDesserten());
+        args.putParcelableArrayList("desserten", menuKaart.getDesserts());
 
-        args.putParcelableArrayList("drinks", menuKaart.GetDrinks());
+        args.putParcelableArrayList("drinks", menuKaart.getDrinks());
         return args;
     }
+
+
 }
