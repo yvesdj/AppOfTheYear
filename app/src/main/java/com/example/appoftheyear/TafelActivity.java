@@ -59,22 +59,42 @@ public class TafelActivity extends AppCompatActivity {
     public void onStart() {
 
         super.onStart();
-        Query menuVoorgerechten = _db.child("Menu").child("Voorgerechten");
+        Query menuVoorgerechten = _db.child("Menu2");
+
 
         // [START basic_query_value_listener]
         // My top posts by number of stars
         menuVoorgerechten.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot itemSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
+
+                    String category = categorySnapshot.getKey();
+//                    Log.d("DBTest", category);
+
+                    for (DataSnapshot itemSnapshot : dataSnapshot.child(category).getChildren()){
+                        String typeOfItem = itemSnapshot.getKey();
+
+                        try {
+                            Object item = Class.forName("com.example.appoftheyear.classLibrary." + category).newInstance();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InstantiationException e) {
+                            e.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        Log.d("DBTest", typeOfItem);
+                    }
 
 //                    String naam = (String)itemSnapshot.child("naam").getValue();
 //                    float prijs = itemSnapshot.child("prijs").getValue();
+//                    MenuItem item = itemSnapshot.getValue(MenuItem.class);
+//                    Log.d("DBTest", itemSnapshot.toString());
+//                    Log.d("DBTest", item.toString());
 
-                    MenuItem item = itemSnapshot.getValue(MenuItem.class);
-
-                    Log.d("DBTest", itemSnapshot.toString());
-                    Log.d("DBTest", item.toString());
                 }
             }
 
