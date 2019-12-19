@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.MenuKaart;
 import com.example.appoftheyear.classLibrary.Tafel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +39,12 @@ public class TafelActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private FloatingActionButton _submitBtn;
+
+    public FloatingActionButton getFloatingActionButton() {
+        return _submitBtn;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,7 @@ public class TafelActivity extends AppCompatActivity {
 
         TextView tafelTitle = findViewById(R.id.TafelTitel);
         tafelTitle.setText("Tafel " + (_dezeTafel.tafelId));
+        _submitBtn = findViewById(R.id.submitBtn);
 
 
         menuKaart = new MenuKaart();

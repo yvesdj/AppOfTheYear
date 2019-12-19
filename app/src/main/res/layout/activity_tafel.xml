@@ -73,6 +73,17 @@
         
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="50dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_assignment_turned_in_black_24dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

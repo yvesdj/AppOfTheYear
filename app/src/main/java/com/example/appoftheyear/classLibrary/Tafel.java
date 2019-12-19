@@ -43,6 +43,28 @@ public class Tafel implements Parcelable {
         tafelItems.add(item);
     }
 
+    public ArrayList<MenuItem> GetEten(){
+        ArrayList<MenuItem> eten = new ArrayList<>();
+        if (tafelItems == null)return eten;
+        for (MenuItem item : tafelItems) {
+            if (item instanceof Voorgerecht || item instanceof Hoofdgerecht || item instanceof Dessert){
+                eten.add(item);
+            }
+        }
+        return eten;
+    }
+
+    public ArrayList<MenuItem> GetDrinken(){
+        ArrayList<MenuItem> drinken = new ArrayList<>();
+        if (tafelItems == null) return drinken;
+        for (MenuItem item : tafelItems) {
+            if(item instanceof Drink){
+                drinken.add(item);
+            }
+        }
+        return drinken;
+    }
+
     protected Tafel(Parcel in) {
         tafelId = in.readInt();
         tafelKey = in.readString();

@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.Tafel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,15 +28,21 @@ import java.util.ArrayList;
  */
 public class DessertFragment extends Fragment {
 
-    private DatabaseReference _db;
-
     private ListView menuListView ;
 //    private ArrayList<String> _desserten;
     private ArrayList<Dessert> _desserten;
     private Tafel _tafel;
+    private FloatingActionButton _submitBtn;
 
     public DessertFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
     }
 
 
@@ -45,7 +52,11 @@ public class DessertFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
 
-        _db = FirebaseDatabase.getInstance().getReference();
+        _submitBtn = ((TafelActivity) getActivity()).getFloatingActionButton();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
+
 
         _desserten = getArguments().getParcelableArrayList("desserten");
         _tafel = getArguments().getParcelable("tafel");
@@ -60,16 +71,19 @@ public class DessertFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Dessert clickedItem =  (Dessert) parent.getItemAtPosition(position);
-                addMenuItemToTable(clickedItem);
-//                _tafel.AddMenuItem(clickedItem);
+
+                _tafel.AddMenuItem(clickedItem);
             }
         });
 
         return view;
     }
 
-    private void addMenuItemToTable(MenuItem item){
-        _db.child("Tafel").child(_tafel.tafelKey).child("Bestelde Items").push().setValue(item);
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
     }
-
 }

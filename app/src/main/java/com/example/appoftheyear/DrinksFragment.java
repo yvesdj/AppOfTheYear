@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.ListView;
 
 import com.example.appoftheyear.classLibrary.Drink;
 import com.example.appoftheyear.classLibrary.Tafel;
-import com.example.appoftheyear.classLibrary.Voorgerecht;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -28,10 +27,20 @@ public class DrinksFragment extends Fragment {
     private ListView menuListView ;
 //    private ArrayList<String> _drinks;
     private ArrayList<Drink> _drinks;
+    private FloatingActionButton _submitBtn;
+
     private Tafel _tafel;
 
     public DrinksFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+
     }
 
 
@@ -40,6 +49,12 @@ public class DrinksFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
+
+        _submitBtn = ((TafelActivity) getActivity()).getFloatingActionButton();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
+
         _drinks = getArguments().getParcelableArrayList("drinks");
         _tafel = getArguments().getParcelable("tafel");
 
@@ -60,6 +75,12 @@ public class DrinksFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
+    }
 
 }

@@ -16,6 +16,7 @@ import android.widget.ListView;
 import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.Hoofdgerecht;
 import com.example.appoftheyear.classLibrary.Tafel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -29,9 +30,18 @@ public class HoofdgerechtenFragment extends Fragment {
 //    private ArrayList<String> _hoofdgerechten;
     private ArrayList<Hoofdgerecht> _hoofdgerechten;
     private Tafel _tafel;
+    private FloatingActionButton _submitBtn;
+
 
     public HoofdgerechtenFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
     }
 
 
@@ -43,6 +53,11 @@ public class HoofdgerechtenFragment extends Fragment {
 //        _hoofdgerechten = (ArrayList<String>)getArguments().getSerializable("hoofdgerechtNamen");
         _hoofdgerechten = getArguments().getParcelableArrayList("hoofdgerechten");
         _tafel = getArguments().getParcelable("tafel");
+
+        _submitBtn = ((TafelActivity) getActivity()).getFloatingActionButton();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
 
         menuListView = view.findViewById( R.id.menuListView );
 
@@ -60,5 +75,13 @@ public class HoofdgerechtenFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
+    }
+
 
 }

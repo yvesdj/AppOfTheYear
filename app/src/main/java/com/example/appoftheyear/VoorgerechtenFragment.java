@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.example.appoftheyear.classLibrary.Hoofdgerecht;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.example.appoftheyear.classLibrary.Voorgerecht;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -36,10 +37,18 @@ public class VoorgerechtenFragment extends Fragment {
 //    private ArrayList<String> _voorgerechten;
     private ArrayList<Voorgerecht> _voorgerechten;
     private Tafel _tafel;
+    private FloatingActionButton _submitBtn;
 
 
     public VoorgerechtenFragment() {
         // Required empty public constructor
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
 
     }
 
@@ -50,6 +59,11 @@ public class VoorgerechtenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
         _voorgerechten = getArguments().getParcelableArrayList("voorgerechten");
         _tafel = getArguments().getParcelable("tafel");
+
+        _submitBtn = ((TafelActivity) getActivity()).getFloatingActionButton();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
 
         menuListView = view.findViewById( R.id.menuListView );
 
@@ -66,6 +80,14 @@ public class VoorgerechtenFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (_submitBtn != null) {
+            _submitBtn.hide();
+        }
     }
 
 }
