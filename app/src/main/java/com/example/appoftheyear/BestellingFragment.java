@@ -47,6 +47,7 @@ public class BestellingFragment extends Fragment {
     private ArrayList<MenuItem> _eten;
     private ArrayList<MenuItem> _drinken;
 
+
     private Tafel _tafel;
     private FloatingActionButton _submitBtn;
 
@@ -60,6 +61,8 @@ public class BestellingFragment extends Fragment {
 
         _tafel = getArguments().getParcelable("tafel");
         _db = FirebaseDatabase.getInstance().getReference();
+
+
 
     }
 
@@ -86,6 +89,11 @@ public class BestellingFragment extends Fragment {
                             writeItemToDB(item, "Drinken");
                         }
                     }
+
+                    _eten.clear();
+                    _drinken.clear();
+                    _tafel.tafelItems.clear();
+                    menuListView.setAdapter(null);
                 }
             });
         }
