@@ -23,10 +23,6 @@ public class Tafel implements Parcelable {
     public Tafel(){
 
     }
-//
-//    public Tafel(){
-//        tafelItems = new ArrayList<>();
-//    }
 
     public Tafel(int tafelId){
         this.tafelId = tafelId;

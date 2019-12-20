@@ -2,30 +2,20 @@ package com.example.appoftheyear;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.example.appoftheyear.classLibrary.Hoofdgerecht;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.example.appoftheyear.classLibrary.Voorgerecht;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.LinkedList;
+
+import androidx.fragment.app.Fragment;
 
 
 /**
@@ -34,7 +24,6 @@ import java.util.LinkedList;
 public class VoorgerechtenFragment extends Fragment {
 
     private ListView menuListView ;
-//    private ArrayList<String> _voorgerechten;
     private ArrayList<Voorgerecht> _voorgerechten;
     private Tafel _tafel;
     private FloatingActionButton _submitBtn;

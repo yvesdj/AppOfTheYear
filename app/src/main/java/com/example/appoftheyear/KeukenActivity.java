@@ -1,19 +1,12 @@
 package com.example.appoftheyear;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.appoftheyear.classLibrary.Drink;
 import com.example.appoftheyear.classLibrary.MenuItem;
-import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,13 +16,15 @@ import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class KeukenActivity extends AppCompatActivity {
 
     private DatabaseReference _db;
     private Query _qEten;
-    private boolean _isPulled = false;
 
-    private ArrayList<Tafel> _tafels = new ArrayList<>();
     private ArrayList<MenuItem> _eten = new ArrayList<>();
 
     private ListView etenListView;
@@ -43,7 +38,7 @@ public class KeukenActivity extends AppCompatActivity {
         _db = FirebaseDatabase.getInstance().getReference();
 
         etenListView = findViewById(R.id.etenListView);
-        etenArrayAdapter = new ArrayAdapter<MenuItem>(this, R.layout.menulist_item, _eten);
+        etenArrayAdapter = new ArrayAdapter<>(this, R.layout.menulist_item, _eten);
         etenListView.setAdapter(etenArrayAdapter);
     }
 
@@ -79,7 +74,6 @@ public class KeukenActivity extends AppCompatActivity {
 
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                    Log.d("BarTafels", "onChildRemoved: " + dataSnapshot.getKey());
 
 
                 }
@@ -102,7 +96,6 @@ public class KeukenActivity extends AppCompatActivity {
                 MenuItem clickedItem =  (MenuItem) parent.getItemAtPosition(position);
                 String itemKey = clickedItem.dbKey;
                 String tafelKey = clickedItem.vanTafel;
-                Log.d("BarTafels", "onItemClick: " + clickedItem.dbKey + clickedItem.vanTafel);
                 DeleteItem(itemKey, tafelKey);
 
                 _eten.remove(clickedItem);

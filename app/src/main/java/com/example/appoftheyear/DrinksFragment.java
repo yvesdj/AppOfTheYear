@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class DrinksFragment extends Fragment {
 
     private ListView menuListView ;
-//    private ArrayList<String> _drinks;
     private ArrayList<Drink> _drinks;
     private FloatingActionButton _submitBtn;
 

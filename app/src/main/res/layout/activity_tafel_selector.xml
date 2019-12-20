@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Tafels"
+            android:text="@string/tafels"
             android:textSize="80sp"
             android:textStyle="bold" />
 
@@ -68,14 +68,14 @@
                     android:background="@drawable/tableicon"
                     android:onClick="GaNaarTafel"
                     android:layout_gravity="center_horizontal"
-                    />
+                    android:contentDescription="@string/tafelbtn" />
                 <TextView
                     android:id="@+id/Tafel0Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="40sp"
                     android:gravity="center"
-                    android:text="Tafel 1"
+                    android:text="@string/tafel_1"
                     />
             </LinearLayout>
 
@@ -92,14 +92,14 @@
                     android:background="@drawable/tableicon"
                     android:onClick="GaNaarTafel"
                     android:layout_gravity="center_horizontal"
-                    />
+                    android:contentDescription="@string/tafelbtn" />
                 <TextView
                     android:id="@+id/Tafel1Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="40dp"
+                    android:textSize="40sp"
                     android:gravity="center"
-                    android:text="Tafel 2"
+                    android:text="@string/tafel_2"
                     />
             </LinearLayout>
 
@@ -116,14 +116,14 @@
                     android:background="@drawable/tableicon"
                     android:onClick="GaNaarTafel"
                     android:layout_gravity="center_horizontal"
-                    />
+                    android:contentDescription="@string/tafelbtn" />
                 <TextView
                     android:id="@+id/Tafel2Text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="40dp"
+                    android:textSize="40sp"
                     android:gravity="center"
-                    android:text="Tafel 3"
+                    android:text="@string/tafel_3"
                     />
             </LinearLayout>
 
@@ -150,14 +150,14 @@
                         android:background="@drawable/tableicon"
                         android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
-                        />
+                        android:contentDescription="@string/tafelbtn" />
                     <TextView
                         android:id="@+id/Tafel3Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="40dp"
+                        android:textSize="40sp"
                         android:gravity="center"
-                        android:text="Tafel 4"
+                        android:text="@string/tafel_4"
                         />
                 </LinearLayout>
 
@@ -174,14 +174,14 @@
                         android:background="@drawable/tableicon"
                         android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
-                        />
+                        android:contentDescription="@string/tafelbtn" />
                     <TextView
                         android:id="@+id/Tafel4Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="40dp"
+                        android:textSize="40sp"
                         android:gravity="center"
-                        android:text="Tafel 5"
+                        android:text="@string/tafel_5"
                         />
                 </LinearLayout>
 
@@ -198,14 +198,14 @@
                         android:background="@drawable/tableicon"
                         android:onClick="GaNaarTafel"
                         android:layout_gravity="center_horizontal"
-                        />
+                        android:contentDescription="@string/tafelbtn" />
                     <TextView
                         android:id="@+id/Tafel5Text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="40dp"
+                        android:textSize="40sp"
                         android:gravity="center"
-                        android:text="Tafel 6"
+                        android:text="@string/tafel_6"
                         />
                 </LinearLayout>
 

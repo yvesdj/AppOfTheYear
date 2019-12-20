@@ -1,36 +1,30 @@
 package com.example.appoftheyear;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.Drink;
-import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BarActivity extends AppCompatActivity {
 
     private DatabaseReference _db;
     private Query _qDrinks;
-    private boolean _isPulled = false;
 
-    private ArrayList<Tafel> _tafels = new ArrayList<>();
     private ArrayList<Drink> _drinksT1 = new ArrayList<>();
 
     private ListView drinksListView;
@@ -44,7 +38,7 @@ public class BarActivity extends AppCompatActivity {
         _db = FirebaseDatabase.getInstance().getReference();
 
         drinksListView = findViewById(R.id.drinksListView);
-        drinkArrayAdapter = new ArrayAdapter<Drink>(this, R.layout.menulist_item, _drinksT1);
+        drinkArrayAdapter = new ArrayAdapter<>(this, R.layout.menulist_item, _drinksT1);
         drinksListView.setAdapter(drinkArrayAdapter);
     }
 
@@ -70,9 +64,6 @@ public class BarActivity extends AppCompatActivity {
                         drink.vanTafel = "Tafel" + finalI;
                         _drinksT1.add(drink);
                         drinkArrayAdapter.notifyDataSetChanged();
-
-                        Log.d("BarTafels", drink.dbKey);
-                        Log.d("BarTafels", drink.vanTafel);
                     }
                 }
 
@@ -83,7 +74,6 @@ public class BarActivity extends AppCompatActivity {
 
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                    Log.d("BarTafels", "onChildRemoved: " + dataSnapshot.getKey());
 
 
                 }
@@ -106,7 +96,6 @@ public class BarActivity extends AppCompatActivity {
                 Drink clickedItem =  (Drink) parent.getItemAtPosition(position);
                 String itemKey = clickedItem.dbKey;
                 String tafelKey = clickedItem.vanTafel;
-                Log.d("BarTafels", "onItemClick: " + clickedItem.dbKey + clickedItem.vanTafel);
                 DeleteItem(itemKey, tafelKey);
 
                 _drinksT1.remove(clickedItem);

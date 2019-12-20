@@ -2,10 +2,6 @@ package com.example.appoftheyear;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.appoftheyear.classLibrary.Dessert;
-import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
 
 
 /**
@@ -29,7 +24,6 @@ import java.util.ArrayList;
 public class DessertFragment extends Fragment {
 
     private ListView menuListView ;
-//    private ArrayList<String> _desserten;
     private ArrayList<Dessert> _desserten;
     private Tafel _tafel;
     private FloatingActionButton _submitBtn;
@@ -63,7 +57,6 @@ public class DessertFragment extends Fragment {
 
         menuListView = view.findViewById( R.id.menuListView );
 
-//        ArrayAdapter menuAdapter = new ArrayAdapter<String>(getActivity(), R.layout.menulist_item, _desserten);
         ArrayAdapter<Dessert> menuAdapter = new ArrayAdapter<Dessert>(getActivity(), R.layout.menulist_item, _desserten);
         menuListView.setAdapter( menuAdapter );
 

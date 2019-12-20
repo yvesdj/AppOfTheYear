@@ -1,12 +1,8 @@
 package com.example.appoftheyear;
 
-import java.lang.reflect.*;
-
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appoftheyear.classLibrary.MenuItem;
 import com.example.appoftheyear.classLibrary.MenuKaart;
@@ -20,8 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -30,7 +26,6 @@ import androidx.viewpager.widget.ViewPager;
 public class TafelActivity extends AppCompatActivity {
 
     private DatabaseReference _db;
-//    private ValueEventListener _getMenu;
 
     private static MenuKaart menuKaart;
 
@@ -76,7 +71,6 @@ public class TafelActivity extends AppCompatActivity {
                 for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
                     // Get child of Menu name which is the class name
                     String category = categorySnapshot.getKey();
-//                    Log.d("DBTest", category);
 
                     for (DataSnapshot itemSnapshot : dataSnapshot.child(category).getChildren()){
                         // Retrieve data from category children
@@ -113,13 +107,11 @@ public class TafelActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         menuKaart.AddMenuItem((MenuItem) menuItem);
-                        Log.d("DBTest", menuItem.toString());
                     }
                 }
-                Log.d("DBTest", String.valueOf(menuKaart.GetDesserten()));
 
-                tabLayout = (TabLayout) findViewById(R.id.tablayout);
-                viewPager = (ViewPager) findViewById(R.id.myViewPager);
+                tabLayout = findViewById(R.id.tablayout);
+                viewPager = findViewById(R.id.myViewPager);
 
                 setViewPager(viewPager);
                 tabLayout.setupWithViewPager(viewPager);
@@ -167,7 +159,6 @@ public class TafelActivity extends AppCompatActivity {
     private Bundle generateBundle(){
         Bundle args = new Bundle();
         args.putParcelable("tafel", _dezeTafel);
-//        args.putStringArrayList("besteldeItems", _bestellingNamen);
 
         args.putParcelableArrayList("voorgerechten", menuKaart.GetVoorgerechten());
         args.putParcelableArrayList("hoofdgerechten", menuKaart.GetHoofdgerechten());

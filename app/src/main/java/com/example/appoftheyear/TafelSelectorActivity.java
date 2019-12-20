@@ -31,13 +31,6 @@ public class TafelSelectorActivity extends AppCompatActivity {
         _db = FirebaseDatabase.getInstance().getReference();
 
         _tafels = new ArrayList<>();
-
-//        for (int i=1; i < 7; i++){
-//            Tafels.add(new Tafel(i));
-//        }
-
-
-        Log.d("Tafels", String.valueOf(_tafels));
     }
 
     @Override
@@ -57,7 +50,6 @@ public class TafelSelectorActivity extends AppCompatActivity {
 
                     _tafels.add(tafel);
                 }
-                Log.d("DBTafels", String.valueOf(_tafels));
             }
 
             @Override
@@ -71,34 +63,22 @@ public class TafelSelectorActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TafelActivity.class);
         switch (view.getId()){
             case (R.id.Tafel0):
-//                generateBundle(0);
                 intent.putExtra("tafel", _tafels.get(0));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel1):
-//                generateBundle(1);
                 intent.putExtra("tafel", _tafels.get(1));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel2):
-//                generateBundle(2);
                 intent.putExtra("tafel", _tafels.get(2));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel3):
-//                generateBundle(3);
                 intent.putExtra("tafel", _tafels.get(3));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel4):
-//                generateBundle(4);
                 intent.putExtra("tafel", _tafels.get(4));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
             case (R.id.Tafel5):
-//                generateBundle(5);
                 intent.putExtra("tafel", _tafels.get(5));
-                Log.d("Tafels", String.valueOf(_tafels.get(0).tafelId));
                 break;
         }
         startActivity(intent);

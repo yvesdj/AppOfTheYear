@@ -2,10 +2,6 @@ package com.example.appoftheyear;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.appoftheyear.classLibrary.Dessert;
 import com.example.appoftheyear.classLibrary.Hoofdgerecht;
 import com.example.appoftheyear.classLibrary.Tafel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
 
 
 /**
@@ -27,7 +24,6 @@ import java.util.ArrayList;
 public class HoofdgerechtenFragment extends Fragment {
 
     private ListView menuListView ;
-//    private ArrayList<String> _hoofdgerechten;
     private ArrayList<Hoofdgerecht> _hoofdgerechten;
     private Tafel _tafel;
     private FloatingActionButton _submitBtn;
@@ -50,7 +46,6 @@ public class HoofdgerechtenFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_voorgerechten, container, false);
-//        _hoofdgerechten = (ArrayList<String>)getArguments().getSerializable("hoofdgerechtNamen");
         _hoofdgerechten = getArguments().getParcelableArrayList("hoofdgerechten");
         _tafel = getArguments().getParcelable("tafel");
 
