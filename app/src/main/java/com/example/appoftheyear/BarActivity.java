@@ -44,7 +44,7 @@ public class BarActivity extends AppCompatActivity {
         _db = FirebaseDatabase.getInstance().getReference();
 
         drinksListView = findViewById(R.id.drinksListView);
-        drinkArrayAdapter = new ArrayAdapter<Drink>(this, android.R.layout.simple_list_item_1, _drinksT1);
+        drinkArrayAdapter = new ArrayAdapter<Drink>(this, R.layout.menulist_item, _drinksT1);
         drinksListView.setAdapter(drinkArrayAdapter);
     }
 
