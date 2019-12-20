@@ -21,14 +21,17 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BarActivity extends AppCompatActivity {
 
     private DatabaseReference _db;
     private Query _qDrinks;
-    private boolean _isPulled = false;
+//    private boolean _isPulled = false;
 
-    private ArrayList<Tafel> _tafels = new ArrayList<>();
+    private HashMap<String, ArrayList<Drink>> _tafelDrinks;
+
+//    private ArrayList<Tafel> _tafels = new ArrayList<>();
     private ArrayList<Drink> _drinksT1 = new ArrayList<>();
 
     private ListView drinksListView;
@@ -108,23 +111,36 @@ public class BarActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
+        _tafelDrinks = new HashMap<>();
+
         for (int i = 1; i < 7; i++){
 
             _qDrinks = _db.child("Tafel").child("Tafel" + i).child("Bestellingen").child("Drinken");
-
+            final ArrayList<Drink> tempList = new ArrayList<>();;
+            final int finalI = i;
             _qDrinks.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    if (dataSnapshot.exists()){
+
+                    if (dataSnapshot.exists()) {
 
                         String naam = String.valueOf(dataSnapshot.child("naam").getValue());
                         float prijs = Float.valueOf(String.valueOf(dataSnapshot.child("prijs").getValue()));
                         Drink drink = new Drink(naam, prijs);
-                        _drinksT1.add(drink);
+
+                        tempList.add(drink);
+
                         drinkArrayAdapter.notifyDataSetChanged();
                         Log.d("BarTafels", String.valueOf(_drinksT1));
                         Log.d("BarTafels", "tell mij");
                     }
+                    _tafelDrinks.put(("Tafel" + finalI), tempList);
+
+                    Log.d("BarTempArrays", String.valueOf(tempList));
+                    for (String i : _tafelDrinks.keySet()) {
+                        Log.d("BarTafels", "key: " + i + " value: " + _tafelDrinks.get(i));
+                    }
+
                 }
 
                 @Override
@@ -149,9 +165,52 @@ public class BarActivity extends AppCompatActivity {
             });
         }
 
+//        for (int i = 1; i < 7; i++){
+//
+//            _qDrinks = _db.child("Tafel").child("Tafel" + i).child("Bestellingen").child("Drinken");
+//
+//            _qDrinks.addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                    if (dataSnapshot.exists()){
+//
+//                        String naam = String.valueOf(dataSnapshot.child("naam").getValue());
+//                        float prijs = Float.valueOf(String.valueOf(dataSnapshot.child("prijs").getValue()));
+//                        Drink drink = new Drink(naam, prijs);
+//                        _drinksT1.add(drink);
+//                        drinkArrayAdapter.notifyDataSetChanged();
+//                        Log.d("BarTafels", String.valueOf(_drinksT1));
+//                        Log.d("BarTafels", "tell mij");
+//                    }
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//        }
+
 
 
     }
+
+
 
 
 }
