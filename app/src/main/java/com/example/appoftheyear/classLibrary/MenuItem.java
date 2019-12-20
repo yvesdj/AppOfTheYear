@@ -8,6 +8,9 @@ public class MenuItem implements Parcelable {
 
     public float prijs;
 
+    public String dbKey;
+    public String vanTafel;
+
     public MenuItem(){
 
     }
